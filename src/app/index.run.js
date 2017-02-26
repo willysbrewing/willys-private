@@ -6,23 +6,35 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $cookies, Data, User) {
+  function runBlock($log, $q, $rootScope, $state, Auth, Data) {
 
-    var user = null;
-    var userId = $cookies.get('user');
+    // Listening statechangeError from ui-router
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+      if (error === 'AUTH_REQUIRED') {
+        $state.go('login');
+      }
+    });
 
-    if(angular.isUndefined(userId)){
-      /* New Visitor */
-      user = User.save(function(){
-        $cookies.put('user', user.id);
-      });
-    }
-    else{
-      /* Returning Visitor */
-      user = User.get({user:userId});
-    }
+    Auth.$onAuthStateChanged(function(firebaseUser){
+      if(!firebaseUser){
+        $state.go('login');
+      }
+    });
 
-    Data.setUser(user.$promise);
+
+    // var auth = Auth;
+    //
+    // // Do a promise
+    // var user = $q(function(resolve, reject){
+    //
+    //   auth.$onAuthStateChanged(function(firebaseUser){
+    //     resolve(firebaseUser);
+    //   });
+    //
+    // });
+    //
+    // Data.setUser(user);
+
   }
 
 })();

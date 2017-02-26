@@ -11,7 +11,7 @@
             'es-ES' : true,
             'en-EN' : false,
         },
-        'DEBUG_MODE' : false,
+        'DEBUG_MODE' : true,
         'ERROR_REPORT' : true,
         //'API_URL': 'http://localhost:8080/',
         //'API_URL': 'https://api.willysbrewing.com'

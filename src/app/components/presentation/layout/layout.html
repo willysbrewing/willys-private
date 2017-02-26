@@ -19,7 +19,7 @@
         </md-button>
       </md-list-item>
       <md-list-item>
-        <md-button ng-click="vm.goTo('user')">
+        <md-button ng-click="vm.goTo('profile')">
           <md-icon class="md-primary">account_box</md-icon>
           <span> Perfil </span>
         </md-button>
@@ -30,6 +30,12 @@
           <span> About </span>
         </md-button>
       </md-list-item>
+      <md-list-item>
+        <md-button ng-click="vm.signOut()">
+          <md-icon class="md-primary">info</md-icon>
+          <span> Logout </span>
+        </md-button>
+      </md-list-item>
     </md-list>
   </md-sidenav>
 
@@ -38,7 +44,7 @@
       <md-button class="md-icon-button" ng-click="vm.openLeftMenu()">
         <md-icon>menu</md-icon>
       </md-button>
-      <span class="md-accent">Willy's</span>
+      <span class="md-accent">Be Willy's</span>
       <!-- fill up the space between left and right area -->
       <span flex></span>
       <span>beta - v{{vm.version}}</span>

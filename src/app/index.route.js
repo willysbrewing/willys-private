@@ -20,37 +20,47 @@
       controller: 'InitController',
       controllerAs: 'vm',
       resolve: {
-        user: function(Data){
+        user: function(Auth, Data){
           Data.notify('partialLoading');
-          return Data.getUser();
+          return Auth.$requireSignIn();
         },
       },
     })
-    .state('user', {
-      url: '/user',
-      templateUrl: 'app/components/view/user/user.html',
-      controller: 'UserController',
+    .state('login', {
+      url: '/login',
+      templateUrl: 'app/components/view/login/login.html',
+      controller: 'LoginController',
       controllerAs: 'vm',
       resolve: {
-        user: function(Data, User){
+        user: function(Auth, Data){
           Data.notify('partialLoading');
-          if(angular.isDefined(Data.getUser())){
-            return Data.getUser();
-          }
-          // Query from ngResource element
-          var user = User.query();
-          // Set promise in Data Factory
-          Data.setUser(user.$promise);
-          // Retun factory method response
-          return Data.getUser();
+          return Auth.$waitForSignIn();
+        },
+      },
+    })
+    .state('profile', {
+      url: '/perfil',
+      templateUrl: 'app/components/view/profile/profile.html',
+      controller: 'ProfileController',
+      controllerAs: 'vm',
+      resolve: {
+        user: function(Auth, Data){
+          Data.notify('partialLoading');
+          return Auth.$requireSignIn();
         },
       },
     })
     .state('about', {
-      url: '/about',
+      url: '/sobre-nosotros',
       templateUrl: 'app/components/view/about/about.html',
       controller: 'AboutController',
       controllerAs: 'vm',
+      resolve: {
+        user: function(Auth, Data){
+          Data.notify('partialLoading');
+          return Auth.$requireSignIn();
+        },
+      },
     })
   }
 

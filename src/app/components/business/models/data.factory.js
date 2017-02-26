@@ -13,12 +13,6 @@
       return {
         initialLoading: true,
         partialLoading: false,
-        getUser: function(){
-          return data.User;
-        },
-        setUser: function(User){
-          data.User = User;
-        },
         subscribe: function(eventName, scope, callback) {
           var handler = $rootScope.$on(eventName, callback);
           scope.$on('$destroy', handler);

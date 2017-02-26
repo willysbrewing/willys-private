@@ -3,10 +3,10 @@
 
   angular
     .module('willys')
-    .controller('UserController', UserController);
+    .controller('ProfileController', ProfileController);
 
   /** @ngInject */
-  function UserController($timeout, user, Data) {
+  function ProfileController(user, Data) {
     var vm = this;
     Data.notify('initialResolved');
     Data.notify('partialResolved');
@@ -14,4 +14,5 @@
     vm.user = user;
 
   }
+
 })();

@@ -26,19 +26,20 @@
     }
 
     /** @ngInject */
-    function LayoutController($scope, $state, $log, $mdSidenav, Data, APP_CONFIG) {
+    function LayoutController($scope, $state, $log, $mdSidenav, Data, Auth, APP_CONFIG) {
       var vm = this;
       vm.version = APP_CONFIG.APP_VERSION;
 
       $scope.initialLoading = Data.initialLoading;
       $scope.partialLoading = Data.partialLoading;
 
-      $scope.user = Data.getUser();
+      //$scope.user = Data.getUser();
 
       Data.subscribe('initialResolved', $scope,
         function(){
           $scope.initialLoading = Data.initialLoading;
-          Data.getUser().then(function(data){$scope.user=data});});
+          //Data.getUser().then(function(data){$scope.user=data});
+        });
 
       Data.subscribe('partialLoading', $scope, function(){$scope.partialLoading = Data.partialLoading;});
       Data.subscribe('partialResolved', $scope, function(){$scope.partialLoading = Data.partialLoading;});
@@ -51,6 +52,10 @@
       vm.goTo = function(state){
         $state.go(state);
         $mdSidenav('left').toggle();
+      };
+
+      vm.signOut = function(state){
+        Auth.$signOut();
       };
 
     }

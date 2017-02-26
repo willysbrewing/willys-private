@@ -6,10 +6,11 @@
     .controller('AboutController', AboutController);
 
   /** @ngInject */
-  function AboutController($timeout, Data) {
+  function AboutController(Data) {
     var vm = this;
     Data.notify('initialResolved');
     Data.notify('partialResolved');
 
   }
+  
 })();
