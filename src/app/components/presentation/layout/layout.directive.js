@@ -27,35 +27,38 @@
 
     /** @ngInject */
     function LayoutController($scope, $state, $log, $mdSidenav, Data, Auth, APP_CONFIG) {
-      var vm = this;
-      vm.version = APP_CONFIG.APP_VERSION;
+      $scope.version = APP_CONFIG.APP_VERSION;
 
       $scope.initialLoading = Data.initialLoading;
       $scope.partialLoading = Data.partialLoading;
+      $scope.user = null;
 
-      //$scope.user = Data.getUser();
-
-      Data.subscribe('initialResolved', $scope,
-        function(){
-          $scope.initialLoading = Data.initialLoading;
-          //Data.getUser().then(function(data){$scope.user=data});
-        });
-
+      Data.subscribe('initialResolved', $scope, function(){$scope.initialLoading = Data.initialLoading;});
       Data.subscribe('partialLoading', $scope, function(){$scope.partialLoading = Data.partialLoading;});
       Data.subscribe('partialResolved', $scope, function(){$scope.partialLoading = Data.partialLoading;});
+      Auth.$onAuthStateChanged(function(firebaseUser){
+        $scope.user = firebaseUser;
+      });
 
-
-      vm.openLeftMenu = function() {
+      $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
       };
 
-      vm.goTo = function(state){
+      $scope.goTo = function(state){
+        if($state.current.name == 'login' && !$scope.user){
+          $mdSidenav('left').toggle();
+          return;
+        }
+        $mdSidenav('left').toggle();
         $state.go(state);
-        $mdSidenav('left').toggle();
       };
 
-      vm.signOut = function(state){
-        Auth.$signOut();
+      $scope.signOut = function(state){
+        $mdSidenav('left').toggle();
+        Data.notify('partialLoading');
+        Auth.$signOut().then(function(){
+          $state.go('login');
+        });
       };
 
     }

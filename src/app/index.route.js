@@ -11,7 +11,7 @@
     $locationProvider.html5Mode(true);
 
     // Default State
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('login');
 
     $stateProvider
     .state('init', {
@@ -34,7 +34,7 @@
       resolve: {
         user: function(Auth, Data){
           Data.notify('partialLoading');
-          return Auth.$waitForSignIn();
+          return Auth.$waitForSignIn()
         },
       },
     })

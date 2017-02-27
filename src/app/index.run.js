@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $q, $rootScope, $state, Auth, Data) {
+  function runBlock($log, $rootScope, $state) {
 
     // Listening statechangeError from ui-router
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
@@ -14,26 +14,6 @@
         $state.go('login');
       }
     });
-
-    Auth.$onAuthStateChanged(function(firebaseUser){
-      if(!firebaseUser){
-        $state.go('login');
-      }
-    });
-
-
-    // var auth = Auth;
-    //
-    // // Do a promise
-    // var user = $q(function(resolve, reject){
-    //
-    //   auth.$onAuthStateChanged(function(firebaseUser){
-    //     resolve(firebaseUser);
-    //   });
-    //
-    // });
-    //
-    // Data.setUser(user);
 
   }
 

@@ -13,25 +13,25 @@
     </md-toolbar>
     <md-list>
       <md-list-item>
-        <md-button ng-click="vm.goTo('init')">
+        <md-button ng-click="goTo('init')">
           <md-icon class="md-primary">home</md-icon>
           <span> Home </span>
         </md-button>
       </md-list-item>
       <md-list-item>
-        <md-button ng-click="vm.goTo('profile')">
+        <md-button ng-click="goTo('profile')">
           <md-icon class="md-primary">account_box</md-icon>
           <span> Perfil </span>
         </md-button>
       </md-list-item>
       <md-list-item>
-        <md-button ng-click="vm.goTo('about')">
+        <md-button ng-click="goTo('about')">
           <md-icon class="md-primary">info</md-icon>
           <span> About </span>
         </md-button>
       </md-list-item>
-      <md-list-item>
-        <md-button ng-click="vm.signOut()">
+      <md-list-item ng-if="user">
+        <md-button ng-click="signOut()">
           <md-icon class="md-primary">info</md-icon>
           <span> Logout </span>
         </md-button>
@@ -41,13 +41,13 @@
 
   <md-toolbar class="wb-toolbar" md-whiteframe="3">
     <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" ng-click="vm.openLeftMenu()">
+      <md-button class="md-icon-button" ng-click="openLeftMenu()">
         <md-icon>menu</md-icon>
       </md-button>
       <span class="md-accent">Be Willy's</span>
       <!-- fill up the space between left and right area -->
       <span flex></span>
-      <span>beta - v{{vm.version}}</span>
+      <span>beta - v{{version}}</span>
     </div>
   </md-toolbar>
 </div>

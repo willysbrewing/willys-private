@@ -34,11 +34,14 @@
 
     /** @ngInject */
     function FooterController($scope, $state, $log, $mdSidenav, Data) {
-      var vm = this;
 
       $scope.initialLoading = Data.initialLoading;
+      $scope.partialLoading = Data.partialLoading;
+      $scope.user = null;
 
       Data.subscribe('initialResolved', $scope, function(){$scope.initialLoading = Data.initialLoading;});
+      Data.subscribe('partialLoading', $scope, function(){$scope.partialLoading = Data.partialLoading;});
+      Data.subscribe('partialResolved', $scope, function(){$scope.partialLoading = Data.partialLoading;});
 
     }
 

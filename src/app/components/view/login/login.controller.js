@@ -9,7 +9,6 @@
   function LoginController(user, Auth, Data, $state) {
     var vm = this;
     Data.notify('initialResolved');
-    Data.notify('partialResolved');
 
     vm.auth = Auth;
     vm.user = user;
@@ -18,6 +17,10 @@
     if(vm.user){
       $state.go('init');
     }
+    else{
+      Data.notify('partialResolved');
+    }
+
 
   }
 

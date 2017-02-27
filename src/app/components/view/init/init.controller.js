@@ -12,7 +12,6 @@
     Data.notify('partialResolved');
 
     vm.user = user;
-    console.log(vm.user);
   }
 
 })();
