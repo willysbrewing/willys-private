@@ -51,12 +51,27 @@ html {
 /* Sidenav*/
 .wb-sidenav{
   background-color: #fff;
-  color: #757575;
+  color: rgba(0,0,0,.654);
+}
+
+.wb-sidenav md-list-item{
+  padding: 0;
+}
+
+.wb-sidenav md-list-item button{
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  padding: 8px 20px;
+  border-radius: 0;
+  text-transform: none;
 }
 
 .wb-toolbar{
   background-color: #fff !important;
-  color: #757575 !important;
+  color: rgba(0,0,0,.654) !important;
+  min-height: 50px;
+  height: 50px;
 }
 
 .overlay{
@@ -99,15 +114,15 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar).md-accent, md-toolbar:not(.md-
 
 /* Init */
 .init {
-  color: #757575;
+  color: rgba(0,0,0,.654);
   padding: 80px 48px 56px 48px;
   min-height: 320px;
 }
 
 /* About */
 .about {
-  color: #757575;
-  padding: 80px 48px 56px 48px;
+  color: rgba(0,0,0,.654);
+  padding: 8rem 48px 56px 48px;
   min-height: 320px;
 }
 
@@ -125,13 +140,13 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar).md-accent, md-toolbar:not(.md-
 .about .btn{
   margin: 0;
   background-color: #fff;
-  color: #757575 !important;
+  color: rgba(0,0,0,.654) !important;
   padding: 5px 20px;
   font-weight: 800;
 }
 
 .about .btn md-icon{
-  color: #757575 !important;
+  color: rgba(0,0,0,.654) !important;
 }
 
 /* Form */
@@ -160,7 +175,7 @@ img.thumbnail{
 /* Footer */
 .wb-footer{
   background-color: rgb(250,250,250);
-  color: #757575;
+  color: rgba(0,0,0,.654);
   text-align: center;
   padding: 16px;
   position: relative;

@@ -26,7 +26,7 @@
     }
 
     /** @ngInject */
-    function LayoutController($scope, $state, $log, $mdSidenav, Data, Auth, APP_CONFIG) {
+    function LayoutController($scope, $state, $log, $mdSidenav, Data, Auth, APP_CONFIG, $mdMenu) {
       $scope.version = APP_CONFIG.APP_VERSION;
 
       $scope.initialLoading = Data.initialLoading;
@@ -54,11 +54,15 @@
       };
 
       $scope.signOut = function(state){
-        $mdSidenav('left').toggle();
         Data.notify('partialLoading');
         Auth.$signOut().then(function(){
           $state.go('login');
         });
+      };
+
+      $scope.openMenu = function($mdMenu, ev) {
+        //var originatorEv = ev;
+        $mdMenu.open(ev);
       };
 
     }

@@ -7,13 +7,13 @@
 </div>
 
 <div ng-if="!initialLoading">
-  <md-sidenav md-component-id="left" class="md-sidenav-left wb-sidenav">
+  <md-sidenav md-component-id="left" class="md-sidenav-left wb-sidenav" md-whiteframe="4">
     <md-toolbar class="sidenav-header md-accent">
       <h1 class="md-toolbar-tools"><img src="assets/images/willys_white.png" width="60px;"></h1>
     </md-toolbar>
     <md-list>
       <md-list-item>
-        <md-button ng-click="goTo('init')">
+        <md-button ng-click="goTo('init')" layout-align="left start">
           <md-icon class="md-primary">home</md-icon>
           <span> Home </span>
         </md-button>
@@ -30,12 +30,12 @@
           <span> About </span>
         </md-button>
       </md-list-item>
-      <md-list-item ng-if="user">
+      <!--<md-list-item ng-if="user">
         <md-button ng-click="signOut()">
           <md-icon class="md-primary">info</md-icon>
           <span> Logout </span>
         </md-button>
-      </md-list-item>
+      </md-list-item>-->
     </md-list>
   </md-sidenav>
 
@@ -44,10 +44,28 @@
       <md-button class="md-icon-button" ng-click="openLeftMenu()">
         <md-icon>menu</md-icon>
       </md-button>
-      <span class="md-accent">Be Willy's</span>
+      <span class="md-accent">W's</span>
       <!-- fill up the space between left and right area -->
       <span flex></span>
-      <span>beta - v{{version}}</span>
+      <md-menu>
+         <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
+           <md-icon>more_vert</md-icon>
+         </md-button>
+         <md-menu-content width="4">
+           <md-menu-item>
+             <md-button ng-click="">
+               <md-icon>settings</md-icon>
+               Configuración
+             </md-button>
+           </md-menu-item>
+           <md-menu-item>
+             <md-button ng-disabled="!user" ng-click="signOut()">
+               <md-icon>power_settings_new</md-icon>
+               Logout
+             </md-button>
+           </md-menu-item>
+         </md-menu-content>
+      </md-menu>
     </div>
   </md-toolbar>
 </div>

@@ -33,7 +33,8 @@
     }
 
     /** @ngInject */
-    function FooterController($scope, $state, $log, $mdSidenav, Data) {
+    function FooterController($scope, $state, $log, $mdSidenav, Data, APP_CONFIG) {
+      $scope.version = APP_CONFIG.APP_VERSION;
 
       $scope.initialLoading = Data.initialLoading;
       $scope.partialLoading = Data.partialLoading;
