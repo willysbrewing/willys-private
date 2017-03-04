@@ -13,6 +13,8 @@
     vm.auth = Auth;
     vm.user = user;
 
+    console.log(vm.user);
+
     // if logged user go to home
     if(vm.user){
       $state.go('init');

@@ -44,7 +44,18 @@
         $mdSidenav('left').toggle();
       };
 
+      $scope.openNavbarMenu = function($mdMenu, ev) {
+        $mdMenu.open(ev);
+      };
+
       $scope.goTo = function(state){
+        if($state.current.name == 'login' && !$scope.user){
+          return;
+        }
+        $state.go(state);
+      };
+
+      $scope.goToFromSidebar = function(state){
         if($state.current.name == 'login' && !$scope.user){
           $mdSidenav('left').toggle();
           return;
@@ -58,11 +69,6 @@
         Auth.$signOut().then(function(){
           $state.go('login');
         });
-      };
-
-      $scope.openMenu = function($mdMenu, ev) {
-        //var originatorEv = ev;
-        $mdMenu.open(ev);
       };
 
     }

@@ -13,29 +13,17 @@
     </md-toolbar>
     <md-list>
       <md-list-item>
-        <md-button ng-click="goTo('init')" layout-align="left start">
+        <md-button ng-click="goToFromSidebar('init')" layout-align="left start">
           <md-icon class="md-primary">home</md-icon>
           <span> Home </span>
         </md-button>
       </md-list-item>
       <md-list-item>
-        <md-button ng-click="goTo('profile')">
-          <md-icon class="md-primary">account_box</md-icon>
-          <span> Perfil </span>
+        <md-button ng-click="goToFromSidebar('init')" layout-align="left start">
+          <md-icon class="md-primary">home</md-icon>
+          <span> Novedades Willy's </span>
         </md-button>
       </md-list-item>
-      <md-list-item>
-        <md-button ng-click="goTo('about')">
-          <md-icon class="md-primary">info</md-icon>
-          <span> About </span>
-        </md-button>
-      </md-list-item>
-      <!--<md-list-item ng-if="user">
-        <md-button ng-click="signOut()">
-          <md-icon class="md-primary">info</md-icon>
-          <span> Logout </span>
-        </md-button>
-      </md-list-item>-->
     </md-list>
   </md-sidenav>
 
@@ -48,20 +36,21 @@
       <!-- fill up the space between left and right area -->
       <span flex></span>
       <md-menu>
-         <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)">
-           <md-icon>more_vert</md-icon>
-         </md-button>
-         <md-menu-content width="4">
+        <md-button class="md-icon-button" ng-click="openNavbarMenu($mdMenu, $event)">
+          <img class="user-thumbnail" ng-if="user.photoURL" ng-src="{{user.photoURL}}">
+          <md-icon ng-if="!user || !user.photoURL">account_circle</md-icon>
+        </md-button>
+         <md-menu-content width="2">
            <md-menu-item>
-             <md-button ng-click="">
-               <md-icon>settings</md-icon>
-               Configuración
+             <md-button ng-click="goTo('profile')">
+               <md-icon>account_circle</md-icon>
+               Perfil
              </md-button>
            </md-menu-item>
            <md-menu-item>
              <md-button ng-disabled="!user" ng-click="signOut()">
                <md-icon>power_settings_new</md-icon>
-               Logout
+               Signout
              </md-button>
            </md-menu-item>
          </md-menu-content>

@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300|Roboto:700|Roboto+Condensed:700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300|Roboto:300,700|Roboto+Condensed:700);
 
 @font-face {
   font-family: 'Material Icons';
@@ -48,6 +48,11 @@ html {
   padding: 0.2em 0;
 }
 
+/* Utils */
+.center  {
+  margin: 0 auto;
+}
+
 /* Sidenav*/
 .wb-sidenav{
   background-color: #fff;
@@ -72,6 +77,11 @@ html {
   color: rgba(0,0,0,.654) !important;
   min-height: 50px;
   height: 50px;
+  position: fixed;
+}
+
+md-content {
+  padding-top: 50px;
 }
 
 .overlay{
@@ -112,43 +122,6 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar).md-accent, md-toolbar:not(.md-
   z-index: 100;
 }
 
-/* Init */
-.init {
-  color: rgba(0,0,0,.654);
-  padding: 80px 48px 56px 48px;
-  min-height: 320px;
-}
-
-/* About */
-.about {
-  color: rgba(0,0,0,.654);
-  padding: 8rem 48px 56px 48px;
-  min-height: 320px;
-}
-
-.about .claim{
-  margin: 0 auto;
-}
-
-.about h2{
-  font-size: 40px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 300;
-}
-
-.about .btn{
-  margin: 0;
-  background-color: #fff;
-  color: rgba(0,0,0,.654) !important;
-  padding: 5px 20px;
-  font-weight: 800;
-}
-
-.about .btn md-icon{
-  color: rgba(0,0,0,.654) !important;
-}
-
 /* Form */
 .form{
   display: flex;
@@ -170,6 +143,25 @@ md-radio-button, md-checkbox{
 img.thumbnail{
   margin: 16px 0;
   width: 100px;
+}
+
+.md-toolbar-tools > md-menu:last-child > .md-button {
+  height: auto;
+  margin-right: 15px;
+}
+
+img.user-thumbnail{
+  -webkit-background-size: 32px 32px;
+  background-size: 32px 32px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  margin: -1px;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 32px;
+  z-index: 0;
 }
 
 /* Footer */
