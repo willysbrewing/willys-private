@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300|Roboto:300,700|Roboto+Condensed:700);
+@import url(//fonts.googleapis.com/css?family=Montserrat|Chau+Philomene+One);
 
 @font-face {
   font-family: 'Material Icons';
@@ -80,8 +80,9 @@ html {
   position: fixed;
 }
 
-md-content {
+md-content#main{
   padding-top: 50px;
+  min-height: 90vh;
 }
 
 .overlay{
@@ -147,7 +148,7 @@ img.thumbnail{
 
 .md-toolbar-tools > md-menu:last-child > .md-button {
   height: auto;
-  margin-right: 15px;
+  margin-right: 0;
 }
 
 img.user-thumbnail{
