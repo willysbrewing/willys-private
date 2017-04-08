@@ -11,17 +11,28 @@
     */
 
     /** @ngInject */
-    function User(APP_CONFIG, $resource){
+    function User($firebaseObject, $firebaseArray){
 
-      return $resource(APP_CONFIG.API_URL+'user/:user', {user:'@id'}, {
-        update: {
-          method: 'PUT', // this method issues a PUT request
+      var ref = firebase.database().ref('users');
+
+      return {
+        get: function(id) {
+          var userRef = ref.child(id);
+          return $firebaseObject(userRef);
         },
-        query:{
-          isArray: false,
+        create: function(authUser) {
+          var user = new $firebaseObject(ref.child(authUser.uid));
+          user.$id = authUser.uid;
+          user.displayName = authUser.displayName;
+          user.email = authUser.email;
+          user.image = authUser.photoURL;
+          user.role = 'USER';
+          return user.$save();
         },
-        cache: true,
-      });
+        update: function(authUser) {
+          // do nothing
+        }
+      };
 
     }
 

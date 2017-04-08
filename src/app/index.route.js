@@ -20,9 +20,11 @@
       controller: 'InitController',
       controllerAs: 'vm',
       resolve: {
-        user: function(Auth, Data){
+        authUser: function(Auth, Data, User){
           Data.notify('partialLoading');
-          return Auth.$requireSignIn();
+          return Auth.$requireSignIn().then(function(authUser){
+            return User.get(authUser.uid);
+          });
         },
       },
     })
@@ -32,9 +34,9 @@
       controller: 'LoginController',
       controllerAs: 'vm',
       resolve: {
-        user: function(Auth, Data){
+        authUser: function(Auth, Data, User){
           Data.notify('partialLoading');
-          return Auth.$waitForSignIn()
+          return Auth.$waitForSignIn();
         },
       },
     })
@@ -44,21 +46,11 @@
       controller: 'ProfileController',
       controllerAs: 'vm',
       resolve: {
-        user: function(Auth, Data){
+        authUser: function(Auth, Data, User){
           Data.notify('partialLoading');
-          return Auth.$requireSignIn();
-        },
-      },
-    })
-    .state('about', {
-      url: '/sobre-nosotros',
-      templateUrl: 'app/components/view/about/about.html',
-      controller: 'AboutController',
-      controllerAs: 'vm',
-      resolve: {
-        user: function(Auth, Data){
-          Data.notify('partialLoading');
-          return Auth.$requireSignIn();
+          return Auth.$requireSignIn().then(function(authUser){
+            return User.get(authUser.uid);
+          });
         },
       },
     })

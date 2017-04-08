@@ -1,17 +1,22 @@
-<md-content flex>
 
-  <div class="about">
-    <div layout="row" layout-xs="column" layout-align="center">
-      <div flex="50" flex-xs="100" class="claim">
-        <h2>Acceso a Be Willy's</h2>
-        <md-button ng-click="vm.auth.$signInWithRedirect('google')" class="btn md-raised">
-          <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Google
-        </md-button>
-        <md-button ng-click="vm.auth.$signInWithRedirect('facebook')" class="btn md-raised">
-          <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Facebook
-        </md-button>
+<div class="md-padding" flex-xs="100" layout-xs="column" flex-gt-xs="80" layout="row" layout-align="center center">
+
+  <div flex-gt-xs="50">
+
+    <div class="about">
+      <div layout="row" layout-xs="column" layout-align="center">
+        <div flex="50" flex-xs="100" class="claim">
+          <h2>Acceso a Be Willy's</h2>
+          <md-button ng-click="vm.Auth.$signInWithRedirect('google')" class="btn md-raised">
+            <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Google
+          </md-button>
+          <md-button ng-click="vm.Auth.$signInWithRedirect('facebook')" class="btn md-raised">
+            <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Facebook
+          </md-button>
+        </div>
       </div>
     </div>
+
   </div>
 
-</md-content>
+</div>

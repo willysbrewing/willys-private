@@ -1,31 +1,31 @@
 <div class="md-padding center" flex-xs="100" layout-xs="column" flex-gt-xs="80" layout="row" layout-align="center center">
 
-<div flex-gt-xs="50">
-  <md-card ng-repeat="feat in vm.featured">
-    <img ng-src="{{ feat.image }}" class="md-card-image" alt="Washed Out">
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">{{ feat.title }}</span>
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-      <p>
-        {{ feat.content }}
-      </p>
-    </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-icon-button" aria-label="Favorite">
-        <md-icon>favorite</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Settings">
-        <md-icon>favorite</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Share">
-        <md-icon>favorite</md-icon>
-      </md-button>
-    </md-card-actions>
-  </md-card>
-</div>
+  <div flex-gt-xs="50">
+    <md-card ng-repeat="feat in vm.featured">
+      <img ng-src="{{ feat.image }}" class="md-card-image" alt="Washed Out">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ feat.title }}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>
+          {{ feat.content }}
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon>favorite</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon>favorite</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Share">
+          <md-icon>favorite</md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
 
 <!-- <div flex-gt-xs="50">
   <md-card ng-repeat="feed in vm.feedTwo">
@@ -54,3 +54,5 @@
     </md-card-actions>
   </md-card>
 </div> -->
+
+</div>
