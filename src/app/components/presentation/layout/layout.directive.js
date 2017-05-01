@@ -26,18 +26,17 @@
     }
 
     /** @ngInject */
-    function LayoutController($scope, $state, $log, $mdSidenav, Data, Auth, APP_CONFIG, $mdMenu) {
+    function LayoutController($scope, $state, $log, $mdSidenav, DataService, AuthService, APP_CONFIG, $mdMenu) {
       $scope.version = APP_CONFIG.APP_VERSION;
 
-      $scope.initialLoading = Data.initialLoading;
-      $scope.partialLoading = Data.partialLoading;
-      $scope.user = null;
+      $scope.initialLoading = DataService.initialLoading;
+      $scope.partialLoading = DataService.partialLoading;
 
-      Data.subscribe('initialResolved', $scope, function(){$scope.initialLoading = Data.initialLoading;});
-      Data.subscribe('partialLoading', $scope, function(){$scope.partialLoading = Data.partialLoading;});
-      Data.subscribe('partialResolved', $scope, function(){$scope.partialLoading = Data.partialLoading;});
-      Auth.$onAuthStateChanged(function(firebaseUser){
-        $scope.user = firebaseUser;
+      DataService.subscribe('initialResolved', $scope, function(){$scope.initialLoading = DataService.initialLoading;});
+      DataService.subscribe('partialLoading', $scope, function(){$scope.partialLoading = DataService.partialLoading;});
+      DataService.subscribe('partialResolved', $scope, function(){$scope.partialLoading = DataService.partialLoading;});
+      AuthService.$onAuthStateChanged(function(authUser){
+        $scope.authUser = authUser;
       });
 
       $scope.openLeftMenu = function() {
@@ -49,14 +48,14 @@
       };
 
       $scope.goTo = function(state){
-        if($state.current.name == 'login' && !$scope.user){
+        if($state.current.name == 'login' && !$scope.authUser){
           return;
         }
         $state.go(state);
       };
 
       $scope.goToFromSidebar = function(state){
-        if($state.current.name == 'login' && !$scope.user){
+        if($state.current.name == 'login' && !$scope.authUser){
           $mdSidenav('left').toggle();
           return;
         }
@@ -65,8 +64,8 @@
       };
 
       $scope.signOut = function(state){
-        Data.notify('partialLoading');
-        Auth.$signOut().then(function(){
+        DataService.notify('partialLoading');
+        AuthService.$signOut().then(function(){
           $state.go('login');
         });
       };

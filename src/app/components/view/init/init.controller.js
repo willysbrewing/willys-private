@@ -6,13 +6,12 @@
     .controller('InitController', InitController);
 
   /** @ngInject */
-  function InitController(authUser, Data, $firebaseArray) {
+  function InitController(authUser, DataService) {
     var vm = this;
-    Data.notify('initialResolved');
-    Data.notify('partialResolved');
+    DataService.notify('initialResolved');
+    DataService.notify('partialResolved');
 
-    vm.user = authUser;
-    vm.featured = $firebaseArray(firebase.database().ref().child("featured"));
+    vm.featured = [1,2]
 
   }
 

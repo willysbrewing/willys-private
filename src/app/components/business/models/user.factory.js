@@ -3,36 +3,37 @@
 
   angular
     .module('willys')
-    .factory('User', User);
-
-    /**
-    * Database connection for User
-    * @TODO Need security Layer on top
-    */
+    .factory('UserService', UserService);
 
     /** @ngInject */
-    function User($firebaseObject, $firebaseArray){
+    function UserService(APP_CONFIG, $resource){
 
-      var ref = firebase.database().ref('users');
+      var User = $resource(APP_CONFIG.API_URL+'/api/'+APP_CONFIG.API_VERSION+'/user/:user_id', {user:'@user_id'}, {
+        'get': {
+          'cache': true
+        },
+        'query': {
+          'isArray': false
+        },
+        'update': {
+          'method': 'PATCH'
+        },
+        'me': {
+          'method': 'GET',
+          'url': APP_CONFIG.API_URL+'/api/'+APP_CONFIG.API_VERSION+'/user/me',
+          'cache': true
+        }
+      });
 
-      return {
-        get: function(id) {
-          var userRef = ref.child(id);
-          return $firebaseObject(userRef);
-        },
-        create: function(authUser) {
-          var user = new $firebaseObject(ref.child(authUser.uid));
-          user.$id = authUser.uid;
-          user.displayName = authUser.displayName;
-          user.email = authUser.email;
-          user.image = authUser.photoURL;
-          user.role = 'USER';
-          return user.$save();
-        },
-        update: function(authUser) {
-          // do nothing
+      User.prototype.serialize = function() {
+        if (this.data.length === 1) {
+          return this.data[0];
+        } else {
+          return this.data;
         }
       };
+
+      return User;
 
     }
 

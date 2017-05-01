@@ -6,12 +6,15 @@
     .controller('ProfileController', ProfileController);
 
   /** @ngInject */
-  function ProfileController(authUser, Data) {
+  function ProfileController(authUser, DataService, UserService) {
     var vm = this;
-    Data.notify('initialResolved');
-    Data.notify('partialResolved');
+    DataService.notify('initialResolved');
+    DataService.notify('partialResolved');
 
-    vm.user = authUser;
+    vm.user = null;
+    vm.user = UserService.me(function(user) {
+      vm.user = user.serialize().attributes;
+    });
 
   }
 

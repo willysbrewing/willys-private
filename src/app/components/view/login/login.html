@@ -7,10 +7,10 @@
       <div layout="row" layout-xs="column" layout-align="center">
         <div flex="50" flex-xs="100" class="claim">
           <h2>Acceso a Be Willy's</h2>
-          <md-button ng-click="vm.Auth.$signInWithRedirect('google')" class="btn md-raised">
+          <md-button ng-click="vm.AuthService.$signInWithRedirect('google')" class="btn md-raised">
             <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Google
           </md-button>
-          <md-button ng-click="vm.Auth.$signInWithRedirect('facebook')" class="btn md-raised">
+          <md-button ng-click="vm.AuthService.$signInWithRedirect('facebook')" class="btn md-raised">
             <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Facebook
           </md-button>
         </div>

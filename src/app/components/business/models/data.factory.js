@@ -3,10 +3,10 @@
 
   angular
     .module('willys')
-    .factory('Data', Data);
+    .factory('DataService', DataService);
 
     /** @ngInject */
-    function Data($rootScope){
+    function DataService($rootScope){
 
       var data = {};
 

@@ -37,8 +37,8 @@
       <span flex></span>
       <md-menu>
         <md-button class="md-icon-button" ng-click="openNavbarMenu($mdMenu, $event)">
-          <img class="user-thumbnail" ng-if="user.photoURL" ng-src="{{user.photoURL}}">
-          <md-icon ng-if="!user || !user.photoURL">account_circle</md-icon>
+          <img class="user-thumbnail" ng-if="authUser.photoURL" ng-src="{{authUser.photoURL}}">
+          <md-icon ng-if="!authUser || !authUser.photoURL">account_circle</md-icon>
         </md-button>
          <md-menu-content width="2">
            <md-menu-item>
@@ -48,7 +48,7 @@
              </md-button>
            </md-menu-item>
            <md-menu-item>
-             <md-button ng-disabled="!user" ng-click="signOut()">
+             <md-button ng-disabled="!authUser" ng-click="signOut()">
                <md-icon>power_settings_new</md-icon>
                Logout
              </md-button>

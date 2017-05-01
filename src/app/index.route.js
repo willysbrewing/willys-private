@@ -20,11 +20,9 @@
       controller: 'InitController',
       controllerAs: 'vm',
       resolve: {
-        authUser: function(Auth, Data, User){
-          Data.notify('partialLoading');
-          return Auth.$requireSignIn().then(function(authUser){
-            return User.get(authUser.uid);
-          });
+        authUser: function(AuthService, DataService){
+          DataService.notify('partialLoading');
+          return AuthService.$requireSignIn();
         },
       },
     })
@@ -34,9 +32,9 @@
       controller: 'LoginController',
       controllerAs: 'vm',
       resolve: {
-        authUser: function(Auth, Data, User){
-          Data.notify('partialLoading');
-          return Auth.$waitForSignIn();
+        authUser: function(AuthService, DataService){
+          DataService.notify('partialLoading');
+          return AuthService.$waitForSignIn();
         },
       },
     })
@@ -46,11 +44,9 @@
       controller: 'ProfileController',
       controllerAs: 'vm',
       resolve: {
-        authUser: function(Auth, Data, User){
-          Data.notify('partialLoading');
-          return Auth.$requireSignIn().then(function(authUser){
-            return User.get(authUser.uid);
-          });
+        authUser: function(AuthService, DataService){
+          DataService.notify('partialLoading');
+          return AuthService.$requireSignIn();
         },
       },
     })

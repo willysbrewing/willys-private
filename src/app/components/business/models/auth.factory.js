@@ -3,10 +3,10 @@
 
   angular
     .module('willys')
-    .factory('Auth', Auth);
+    .factory('AuthService', AuthService);
 
     /** @ngInject */
-    function Auth(APP_CONFIG, $firebaseAuth){
+    function AuthService($firebaseAuth) {
       return $firebaseAuth();
     }
 

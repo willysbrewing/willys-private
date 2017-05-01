@@ -6,26 +6,20 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController(authUser, Auth, Data, User, $state) {
+  function LoginController(authUser, AuthService, DataService, UserService, $state, $http) {
     var vm = this;
-    Data.notify('initialResolved');
-    vm.Auth = Auth;
+    DataService.notify('initialResolved');
+    vm.AuthService = AuthService;
 
     if (authUser) {
-      var user = User.get(authUser.uid).$loaded(function(){
-        if (user.$id) {
-          vm.user = user;
-          $state.go('init');
-        } else {
-          User.create(authUser).then(function(user){
-            vm.user = user;
-            $state.go('init');
-
-          });
-        }
+      authUser.getToken().then(function(tokenId){
+        sessionStorage.user = angular.toJson({
+          'tokenId': tokenId
+        });
+        $state.go('init');
       });
     } else {
-      Data.notify('partialResolved');
+      DataService.notify('partialResolved');
     }
 
   }

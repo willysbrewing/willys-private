@@ -33,16 +33,15 @@
     }
 
     /** @ngInject */
-    function FooterController($scope, $state, $log, $mdSidenav, Data, APP_CONFIG) {
+    function FooterController($scope, $state, $log, $mdSidenav, DataService, APP_CONFIG) {
       $scope.version = APP_CONFIG.APP_VERSION;
 
-      $scope.initialLoading = Data.initialLoading;
-      $scope.partialLoading = Data.partialLoading;
-      $scope.user = null;
+      $scope.initialLoading = DataService.initialLoading;
+      $scope.partialLoading = DataService.partialLoading;
 
-      Data.subscribe('initialResolved', $scope, function(){$scope.initialLoading = Data.initialLoading;});
-      Data.subscribe('partialLoading', $scope, function(){$scope.partialLoading = Data.partialLoading;});
-      Data.subscribe('partialResolved', $scope, function(){$scope.partialLoading = Data.partialLoading;});
+      DataService.subscribe('initialResolved', $scope, function(){$scope.initialLoading = DataService.initialLoading;});
+      DataService.subscribe('partialLoading', $scope, function(){$scope.partialLoading = DataService.partialLoading;});
+      DataService.subscribe('partialResolved', $scope, function(){$scope.partialLoading = DataService.partialLoading;});
 
     }
 
