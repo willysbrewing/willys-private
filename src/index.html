@@ -33,7 +33,7 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
+  <body md-theme="default">
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
     <!--[if lt IE 10]>
@@ -42,13 +42,7 @@
 
     <div>
 
-      <wb-layout></wb-layout>
-
-      <md-content id="main">
-        <div ui-view></div>
-      </md-content>
-
-      <wb-footer></wb-footer>
+      <div id="main" ui-view="main" layout="column"></div>
 
     </div>
 

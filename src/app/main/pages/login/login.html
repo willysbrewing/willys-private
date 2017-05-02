@@ -1,0 +1,17 @@
+<div flex flex-gt-xs="25" flex-offset-gt-xs="33">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Acceso a Be Willy's</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-button ng-click="vm.AuthService.$signInWithRedirect('google')" class="btn md-raised">
+        <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Google
+      </md-button>
+      <md-button ng-click="vm.AuthService.$signInWithRedirect('facebook')" class="btn md-raised">
+        <md-icon md-svg-src="assets/images/facebook-logo.svg"></md-icon> Login con Facebook
+      </md-button>
+    </md-card-content>
+  </md-card>
+</div>

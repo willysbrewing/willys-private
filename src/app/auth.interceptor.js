@@ -6,7 +6,7 @@
     .factory('authInterceptor', authInterceptor);
 
   /** @ngInject */
-  function authInterceptor($q, $firebaseAuth, $location) {
+  function authInterceptor($q, $firebaseAuth) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
@@ -19,7 +19,7 @@
         },
         response: function (response) {
             if (response.status === 403 || response.status === 401) {
-              authUser.getToken({'forceRefresh': true}).then(function(tokenId){
+              $firebaseAuth.getAuth().getToken({'forceRefresh': true}).then(function(tokenId){
                 sessionStorage.user = angular.toJson({
                   'tokenId': tokenId
                 });
@@ -31,4 +31,3 @@
   }
 
 })();
-  

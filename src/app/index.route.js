@@ -14,42 +14,22 @@
     $urlRouterProvider.otherwise('login');
 
     $stateProvider
-    .state('init', {
-      url: '/',
-      templateUrl: 'app/components/view/init/init.html',
-      controller: 'InitController',
-      controllerAs: 'vm',
-      resolve: {
-        authUser: function(AuthService, DataService){
-          DataService.notify('partialLoading');
-          return AuthService.$requireSignIn();
-        },
-      },
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'app/components/view/login/login.html',
-      controller: 'LoginController',
-      controllerAs: 'vm',
-      resolve: {
-        authUser: function(AuthService, DataService){
-          DataService.notify('partialLoading');
-          return AuthService.$waitForSignIn();
-        },
-      },
-    })
-    .state('profile', {
-      url: '/perfil',
-      templateUrl: 'app/components/view/profile/profile.html',
-      controller: 'ProfileController',
-      controllerAs: 'vm',
-      resolve: {
-        authUser: function(AuthService, DataService){
-          DataService.notify('partialLoading');
-          return AuthService.$requireSignIn();
-        },
-      },
-    })
+    .state('app', {
+        abstract: true,
+        views   : {
+            'main@'         : {
+                templateUrl: 'app/core/layouts/vertical-navigation.html'
+            },
+            'toolbar@app'   : {
+                templateUrl: 'app/toolbar/toolbar.html',
+                controller : 'ToolbarController as vm'
+            },
+            'navigation@app': {
+                templateUrl: 'app/navigation/navigation.html',
+                controller : 'NavigationController as vm'
+            }
+        }
+    });
   }
 
 })();
