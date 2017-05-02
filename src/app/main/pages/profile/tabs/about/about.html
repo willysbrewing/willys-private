@@ -1,0 +1,49 @@
+<div layout="row" layout-wrap>
+
+    <div class="about" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="65">
+        <div class="profile-box info-box general md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="title">Información general</div>
+            </header>
+
+            <div class="content">
+              <div class="info-line">
+                <div class="title">Nombre </div>
+                <div class="info">{{vm.user.first_name}} {{vm.user.last_name}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Gender</div>
+                <div class="info">{{vm.user.gender || 'notset'}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Usuario</div>
+                <div class="info">Te uniste el {{vm.user.created_at | date:'shortDate' }} con el email {{vm.user.email}}</div>
+              </div>
+
+            </div>
+        </div>
+
+        <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="title">Contacto</div>
+            </header>
+            <div class="content">
+                <div class="info-line">
+                    <div class="title">Dirección</div>
+                    <div class="info">{{vm.user.address || 'notset'}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title">Teléfono</div>
+                    <div class="info">{{ vm.user.phone || 'notset' }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-sidebar" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="35">
+          <ms-card template="'app/core/directives/ms-card/templates/template-3/template-3.html'" ng-model="vm.card"></ms-card>
+    </div>
+
+</div>

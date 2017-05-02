@@ -6,7 +6,7 @@
     .factory('authInterceptor', authInterceptor);
 
   /** @ngInject */
-  function authInterceptor($q, $firebaseAuth) {
+  function authInterceptor($q, AuthService, $injector) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
@@ -17,15 +17,24 @@
             }
             return config;
         },
-        response: function (response) {
-            if (response.status === 403 || response.status === 401) {
-              $firebaseAuth.getAuth().getToken({'forceRefresh': true}).then(function(tokenId){
+        responseError: function (response) {
+            if (response.status === 401) {
+              AuthService.$getAuth().getToken(true).then(function(tokenId){
                 sessionStorage.user = angular.toJson({
                   'tokenId': tokenId
                 });
+                // @TODO return new promise request
+                var deferred = $q.defer();
+                $injector.get("$http")(response.config).then(function(resp) {
+                    deferred.resolve(resp);
+                },function() {
+                    deferred.reject();
+                });
+                return $q.when(deferred.promise);
               });
+            } else {
+              return response || $q.when(response);
             }
-            return response || $q.when(response);
         }
     };
   }

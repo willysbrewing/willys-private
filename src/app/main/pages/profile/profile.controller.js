@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('willys')
+    .module('app.main')
     .controller('ProfileController', ProfileController);
 
   /** @ngInject */
@@ -10,11 +10,23 @@
     var vm = this;
     DataService.notify('initialResolved');
     DataService.notify('partialResolved');
+    vm.authUser = authUser;
 
     vm.user = null;
     vm.user = UserService.me(function(user) {
       vm.user = user.serialize().attributes;
     });
+
+    vm.card = {
+        "title": "Inversor",
+        "subtitle": "",
+        "media": {
+            "image": {
+                "src": "/assets/images/backgrounds/riotapa.jpg",
+                "alt": "Alice Cooper - Poison"
+            }
+        }
+    };
 
   }
 

@@ -5,7 +5,6 @@
                    translate-attr-aria-label="TOOLBAR.TOGGLE_NAVIGATION">
             <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
         </md-button>
-        <div class="toolbar-separator"></div>
     </div>
 
     <div layout="row" layout-align="start center">
@@ -19,9 +18,8 @@
                            translate translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
                     <div layout="row" layout-align="space-between center">
                         <div class="avatar-wrapper">
-                            <img md-menu-align-target class="avatar" src="assets/images/profile.jpg">
+                            <img md-menu-align-target class="avatar" ng-src="{{vm.photoUrl}}">
                         </div>
-                        <span class="username" hide show-gt-sm>John Doe</span>
                         <md-icon md-font-icon="icon-chevron-down"
                                  class="icon s16" hide-xs></md-icon>
                     </div>
@@ -37,7 +35,7 @@
 
                     <md-menu-item class="md-indent">
                         <md-icon md-font-icon="icon-logout" class="icon"></md-icon>
-                        <md-button ng-click="vm.logout()">Logout</md-button>
+                        <md-button ng-disabled="!vm.authUser" ng-click="vm.logout()">Logout</md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>

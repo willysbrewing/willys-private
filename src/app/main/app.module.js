@@ -16,33 +16,18 @@
 
       // States
       $stateProvider
-      .state('app.init', {
+      .state('app.home', {
           url      : '/',
           views    : {
             'content@app': {
-                templateUrl: 'app/main/pages/init/init.html',
-                controller : 'InitController as vm'
+                templateUrl: 'app/main/pages/home/home.html',
+                controller : 'HomeController as vm'
             }
           },
           resolve: {
             authUser: function(AuthService, DataService){
               DataService.notify('partialLoading');
               return AuthService.$requireSignIn();
-            }
-          }
-      })
-      .state('app.login', {
-          url      : '/login',
-          views    : {
-            'content@app': {
-                templateUrl: 'app/main/pages/login/login.html',
-                controller : 'LoginController as vm'
-            }
-          },
-          resolve: {
-            authUser: function(AuthService, DataService){
-              DataService.notify('partialLoading');
-              return AuthService.$waitForSignIn();
             }
           }
       })
@@ -64,15 +49,15 @@
 
       // Navigation
       msNavigationServiceProvider.saveItem('pages', {
-          title : 'Pages',
+          title : 'Secciones',
           group : true,
           weight: 1
       });
 
       msNavigationServiceProvider.saveItem('pages.init', {
           title    : 'Home',
-          icon     : 'icon-tile-four',
-          state    : 'app.init',
+          icon     : 'icon-home',
+          state    : 'app.home',
           weight   : 1
       });
 

@@ -7,18 +7,26 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService)
+    function ToolbarController($rootScope, $q, $state, $timeout, $mdSidenav, $translate, $mdToast, msNavigationService, AuthService)
     {
         var vm = this;
+        vm.authUser = null;
+        vm.photoUrl = 'assets/images/profile.jpg'
 
         vm.bodyEl = angular.element('body');
 
         // Methods
         vm.toggleSidenav = toggleSidenav;
         vm.logout = logout;
-        vm.setUserStatus = setUserStatus;
         vm.toggleHorizontalMobileMenu = toggleHorizontalMobileMenu;
         vm.toggleMsNavigationFolded = toggleMsNavigationFolded;
+
+        AuthService.$onAuthStateChanged(function(authUser){
+          vm.authUser = authUser;
+          if (authUser) {
+            vm.photoUrl = authUser.photoURL;
+          }
+        });
 
         //////////
 
@@ -43,21 +51,15 @@
             $mdSidenav(sidenavId).toggle();
         }
 
-        /**
-         * Sets User Status
-         * @param status
-         */
-        function setUserStatus(status)
-        {
-            vm.userStatus = status;
-        }
 
         /**
          * Logout Function
          */
         function logout()
         {
-            // Do logout here..
+          AuthService.$signOut().then(function(){
+            $state.go('app.login');
+          });
         }
 
         /**

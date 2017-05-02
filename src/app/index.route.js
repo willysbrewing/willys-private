@@ -10,9 +10,6 @@
     // Enabe HTML5 Mode
     $locationProvider.html5Mode(true);
 
-    // Default State
-    $urlRouterProvider.otherwise('login');
-
     $stateProvider
     .state('app', {
         abstract: true,
