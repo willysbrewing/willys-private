@@ -16,7 +16,7 @@
         sessionStorage.user = angular.toJson({
           'tokenId': tokenId
         });
-        $state.go('app.init');
+        $state.go('app.home');
       });
     } else {
       DataService.notify('partialResolved');
