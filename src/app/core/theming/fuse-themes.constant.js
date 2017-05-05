@@ -99,7 +99,7 @@
                 }
             }
         },
-        "CUSTOM" : {"primary":{"name":"fuse-blue","hues":{"default":"700","hue-1":"500","hue-2":"600","hue-3":"400"}},"accent":{"name":"blue-grey","hues":{"default":"600","hue-1":"400","hue-2":"700","hue-3":"A100"}},"warn":{"name":"amber","hues":{"default":"500","hue-1":"300","hue-2":"800","hue-3":"A100"}},"background":{"name":"grey","hues":{"default":"A100","hue-1":"A100","hue-2":"100","hue-3":"300"}}}
+        "CUSTOM" : {"primary":{"name":"grey","hues":{"default":"800","hue-1":"500","hue-2":"600","hue-3":"400"}},"accent":{"name":"blue-grey","hues":{"default":"600","hue-1":"400","hue-2":"700","hue-3":"A100"}},"warn":{"name":"fuse-blue","hues":{"default":"500","hue-1":"300","hue-2":"800","hue-3":"A100"}},"background":{"name":"grey","hues":{"default":"A100","hue-1":"A100","hue-2":"100","hue-3":"300"}}}
 
     };
 

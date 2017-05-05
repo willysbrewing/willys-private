@@ -4,8 +4,9 @@
         height: 320px;
         min-height: 320px;
         max-height: 320px;
-        background: url('/assets/images/backgrounds/july.jpg') no-repeat 0 45%;
+        //background: url('/assets/images/backgrounds/july.jpg') no-repeat 0 45%;
         background-size: 100% auto;
+        background: material-color('grey');
 
         .profile-image {
             margin-right: 24px;
