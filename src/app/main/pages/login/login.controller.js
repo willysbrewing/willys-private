@@ -6,9 +6,8 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController(authUser, AuthService, DataService, UserService, $state) {
+  function LoginController(authUser, AuthService, UserService, $state) {
     var vm = this;
-    DataService.notify('initialResolved');
     vm.AuthService = AuthService;
 
     if (authUser) {
@@ -18,8 +17,16 @@
         });
         $state.go('app.home');
       });
-    } else {
-      DataService.notify('partialResolved');
+    }
+
+    vm.login = function() {
+      vm.AuthService.$signInWithEmailAndPassword(vm.form.email, vm.form.password)
+      .catch(function(error) {
+        vm.error = error.message;
+        if (error.code === 'auth/user-not-found') {
+          vm.error = 'Usuario o password no válido';
+        }
+      });
     }
 
   }

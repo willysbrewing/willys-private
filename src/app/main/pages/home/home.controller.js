@@ -6,11 +6,9 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(authUser, DataService) {
+  function HomeController(authUser) {
     var vm = this;
-    DataService.notify('initialResolved');
-    DataService.notify('partialResolved');
-
+    
     vm.featured = [1,2,4,5]
     vm.image = "https://www.willysbrewing.com/media/images/riotapa_Ydj4MCz.2e16d0ba.fill-1800x978.jpg"
     vm.card = {

@@ -6,11 +6,10 @@
     .controller('ProfileController', ProfileController);
 
   /** @ngInject */
-  function ProfileController(authUser, DataService, UserService) {
+  function ProfileController(authUser, UserService) {
     var vm = this;
-    DataService.notify('initialResolved');
-    DataService.notify('partialResolved');
     vm.authUser = authUser;
+    vm.photoUrl = vm.authUser.photoURL || 'assets/images/profile.jpg';
 
     vm.user = null;
     vm.user = UserService.me(function(user) {

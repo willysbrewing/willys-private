@@ -1,0 +1,105 @@
+<div id="register-v2" layout="row" layout-align="start">
+    <div id="register-v2-intro" flex hide show-gt-sm>
+      <div class="logo">
+          <span><img src="assets/images/willys.svg"></span>
+      </div>
+      <div class="title">
+          Regístrate para acceder a Zona Willy's
+      </div>
+    </div>
+
+    <div id="register-v2-form-wrapper" class="flex-scrollable md-whiteframe-8dp" layout="column" flex ms-scroll>
+        <div id="register-v2-form">
+            <div class="logo" hide-gt-sm>
+              <span><img src="assets/images/willys.svg"></span>
+            </div>
+
+            <div class="title">Créate una cuenta</div>
+
+            <form name="registerForm" novalidate>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="firstname" ng-model="vm.form.firstname" placeholder="Nombre"
+                           required>
+                    <div ng-messages="registerForm.firstname.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Nombre</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input name="lastname" ng-model="vm.form.lastname" placeholder="Apellidos"
+                           required>
+                    <div ng-messages="registerForm.lastname.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Apellidos</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="email" name="email" ng-model="vm.form.email" placeholder="Email"
+                           ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="registerForm.email.$error" role="alert" multiple>
+                        <div ng-message="required">
+                          <span>Email es requerido</span>
+                        </div>
+                        <div ng-message="pattern">
+                          <span>Debe ser un email válido</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="vm.form.password" placeholder="Password"
+                           required ng-minlength="6">
+                    <div ng-messages="registerForm.password.$error" role="alert">
+                        <div ng-message="required">
+                          <span>Contraseña es requerida</span>
+                        </div>
+                        <div ng-message="minlength">
+                          <span>Al menos 6 digitos</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="passwordConfirm" ng-model="vm.form.passwordConfirm"
+                           placeholder="Password (Confirmar)"
+                           required ng-minlength="6">
+                    <div ng-messages="registerForm.passwordConfirm.$error" role="alert">
+                        <div ng-message="required">
+                          <span>Contraseña es requerida</span>
+                        </div>
+                        <div ng-message="minlength">
+                          <span>Al menos 6 digitos</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div class="terms" layout="row" layout-align="center center">
+                    <md-checkbox name="terms" ng-model="data.cb1" aria-label="I read and accept" required></md-checkbox>
+                    <div layout="row" layout-sm="column" layout-align="start center">
+                        <span>Acepto los</span>
+                        <a href="https://www.willysbrewing.com/cookies/" target="_blank" class="md-accent-color"> términos y condiciones</a>
+                    </div>
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
+                           ng-disabled="registerForm.$invalid || registerForm.$pristine"
+                           ng-click="vm.register()">
+                    CREAR MI CUENTA
+                </md-button>
+            </form>
+
+            <div>
+              <span class="md-warn-fg"> {{ vm.error }}</span>
+            </div>
+
+            <div class="login" layout="row" layout-sm="column" layout-align="center center">
+                <span class="text">Ya tengo una cuenta</span>
+                <a class="link" ui-sref="app.login">Log in</a>
+            </div>
+        </div>
+    </div>
+</div>

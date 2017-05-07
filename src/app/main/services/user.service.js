@@ -8,7 +8,7 @@
     /** @ngInject */
     function UserService(APP_CONFIG, $resource){
 
-      var User = $resource(APP_CONFIG.API_URL+'/api/'+APP_CONFIG.API_VERSION+'/user/:user_id', {user:'@user_id'}, {
+      var User = $resource(APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/user/:user_id', {user:'@user_id'}, {
         'get': {
           'cache': true
         },
@@ -20,7 +20,12 @@
         },
         'me': {
           'method': 'GET',
-          'url': APP_CONFIG.API_URL+'/api/'+APP_CONFIG.API_VERSION+'/user/me',
+          'url': APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/user/me',
+          'cache': true
+        },
+        'createMe': {
+          'method': 'POST',
+          'url': APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/user/me',
           'cache': true
         }
       });

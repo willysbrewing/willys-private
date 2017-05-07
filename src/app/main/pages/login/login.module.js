@@ -22,8 +22,7 @@
               }
           },
           resolve: {
-            authUser: function(AuthService, DataService){
-              DataService.notify('partialLoading');
+            authUser: function(AuthService){
               return AuthService.$waitForSignIn();
             }
           },

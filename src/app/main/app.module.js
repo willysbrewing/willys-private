@@ -25,8 +25,7 @@
             }
           },
           resolve: {
-            authUser: function(AuthService, DataService){
-              DataService.notify('partialLoading');
+            authUser: function(AuthService){
               return AuthService.$requireSignIn();
             }
           }
@@ -40,8 +39,7 @@
             }
           },
           resolve: {
-            authUser: function(AuthService, DataService){
-              DataService.notify('partialLoading');
+            authUser: function(AuthService){
               return AuthService.$requireSignIn();
             }
           }
@@ -61,8 +59,8 @@
           weight   : 1
       });
 
-      msNavigationServiceProvider.saveItem('pages.about', {
-          title    : 'About',
+      msNavigationServiceProvider.saveItem('pages.events', {
+          title    : 'Eventos',
           icon     : 'icon-tile-four',
           state    : 'app.about',
           weight   : 1

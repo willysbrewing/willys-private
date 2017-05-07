@@ -11,7 +11,7 @@
     {
         var vm = this;
         vm.authUser = null;
-        vm.photoUrl = 'assets/images/profile.jpg'
+        vm.photoUrl = 'assets/images/profile.jpg';
 
         vm.bodyEl = angular.element('body');
 
