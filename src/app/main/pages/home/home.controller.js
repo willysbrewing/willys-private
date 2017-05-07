@@ -8,8 +8,8 @@
   /** @ngInject */
   function HomeController(authUser) {
     var vm = this;
-    
-    vm.featured = [1,2,4,5]
+
+    vm.featured = [1,2]
     vm.image = "https://www.willysbrewing.com/media/images/riotapa_Ydj4MCz.2e16d0ba.fill-1800x978.jpg"
     vm.card = {
         "title": "Nature",

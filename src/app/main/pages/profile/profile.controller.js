@@ -17,11 +17,12 @@
     });
 
     vm.card = {
-        "title": "Inversor",
-        "subtitle": "",
+        "title": "Rate this album",
+        "subtitle": "Alice Cooper",
+        "text": "Poison",
         "media": {
             "image": {
-                "src": "/assets/images/backgrounds/riotapa.jpg",
+                "src": "assets/images/etc/alice-cooper-poison.jpg",
                 "alt": "Alice Cooper - Poison"
             }
         }

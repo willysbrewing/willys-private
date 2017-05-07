@@ -21,6 +21,9 @@
 
     vm.login = function() {
       vm.AuthService.$signInWithEmailAndPassword(vm.form.email, vm.form.password)
+      .then(function(){
+        $state.go('app.home');
+      })
       .catch(function(error) {
         vm.error = error.message;
         if (error.code === 'auth/user-not-found') {

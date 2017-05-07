@@ -31,11 +31,39 @@
           }
       })
       .state('app.profile', {
-          url      : '/profile',
+          url      : '/perfil',
           views    : {
             'content@app': {
                 templateUrl: 'app/main/pages/profile/profile.html',
                 controller : 'ProfileController as vm'
+            }
+          },
+          resolve: {
+            authUser: function(AuthService){
+              return AuthService.$requireSignIn();
+            }
+          }
+      })
+      .state('app.events', {
+          url      : '/eventos',
+          views    : {
+            'content@app': {
+                templateUrl: 'app/main/pages/events/events.html',
+                controller : 'EventsController as vm'
+            }
+          },
+          resolve: {
+            authUser: function(AuthService){
+              return AuthService.$requireSignIn();
+            }
+          }
+      })
+      .state('app.contests', {
+          url      : '/concursos',
+          views    : {
+            'content@app': {
+                templateUrl: 'app/main/pages/contests/contests.html',
+                controller : 'ContestsController as vm'
             }
           },
           resolve: {
@@ -61,8 +89,15 @@
 
       msNavigationServiceProvider.saveItem('pages.events', {
           title    : 'Eventos',
-          icon     : 'icon-tile-four',
-          state    : 'app.about',
+          icon     : 'icon-cup',
+          state    : 'app.events',
+          weight   : 1
+      });
+
+      msNavigationServiceProvider.saveItem('pages.contests', {
+          title    : 'Concursos',
+          icon     : 'icon-crown',
+          state    : 'app.contests',
           weight   : 1
       });
 

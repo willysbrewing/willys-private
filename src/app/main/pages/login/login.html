@@ -17,7 +17,30 @@
               <span><img src="assets/images/willys.svg"></span>
             </div>
 
-            <div class="title">Accede a Willy's con tu email</div>
+            <div class="title">Accede a Willy's</div>
+
+            <div class="separator">
+            </div>
+
+            <div layout="column" layout-align="start center">
+                <md-button class="md-raised google" ng-click="vm.AuthService.$signInWithRedirect('google')">
+                    <div layout="row" layout-align="center center">
+                        <span>
+                            <md-icon md-font-icon="icon-google-plus" class="s16"></md-icon>
+                            <span>Log in con Google</span>
+                        </span>
+                    </div>
+                </md-button>
+
+                <md-button class="md-raised facebook" ng-click="vm.AuthService.$signInWithRedirect('facebook')">
+                    <div layout="row" layout-align="center center">
+                        <span>
+                            <md-icon md-font-icon="icon-facebook" class="s16"></md-icon>
+                            <span>Log in con Facebook</span>
+                        </span>
+                    </div>
+                </md-button>
+            </div>
 
             <form name="loginForm" novalidate>
                 <md-input-container class="md-block" md-no-float>
@@ -64,26 +87,6 @@
             </div>
 
             <div class="separator">
-            </div>
-
-            <div layout="column" layout-align="start center">
-                <md-button class="md-raised google" ng-click="vm.AuthService.$signInWithRedirect('google')">
-                    <div layout="row" layout-align="center center">
-                        <span>
-                            <md-icon md-font-icon="icon-google-plus" class="s16"></md-icon>
-                            <span>Log in con Google</span>
-                        </span>
-                    </div>
-                </md-button>
-
-                <md-button class="md-raised facebook" ng-click="vm.AuthService.$signInWithRedirect('facebook')">
-                    <div layout="row" layout-align="center center">
-                        <span>
-                            <md-icon md-font-icon="icon-facebook" class="s16"></md-icon>
-                            <span>Log in con Facebook</span>
-                        </span>
-                    </div>
-                </md-button>
             </div>
 
             <div class="register" layout="row" layout-sm="column" layout-align="center center">
