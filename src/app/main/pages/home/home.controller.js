@@ -20,8 +20,10 @@
 
     vm.likeNews = function(news) {
       if(vm.user.news_likes.indexOf(news.id) < 0){
+        // update just view model, no more requests
         news.attributes.likes.push(vm.user.id);
         vm.user.news_likes.push(news.id);
+        // now update! transactional yo
         NewsService.like({
           news_id: news.id
         });
