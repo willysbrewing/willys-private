@@ -20,11 +20,7 @@
       });
 
       News.prototype.serialize = function() {
-        if (this.data.length === 1){
-          return this.data[0];
-        } else {
-          return this.data;
-        }
+        return this.data;
       };
 
       return News;

@@ -13,7 +13,6 @@
       vm.user = user.serialize().attributes;
     });
 
-    vm.news = null;
     vm.news = NewsService.query(function(news) {
       vm.news = news.serialize();
     });

@@ -13,7 +13,6 @@
       vm.user = user.serialize().attributes;
     });
 
-    vm.events = null;
     vm.events = EventService.query(function(events) {
       vm.events = events.serialize();
     });
