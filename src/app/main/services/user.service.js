@@ -13,7 +13,6 @@
           'cache': true
         },
         'query': {
-          'isArray': false
         },
         'update': {
           'method': 'PATCH'

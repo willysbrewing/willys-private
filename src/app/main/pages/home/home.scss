@@ -4,10 +4,12 @@
     padding: 0;
   }
 
-  .featured-card{
-    height:240px;
-    background: url('/assets/images/backgrounds/preequity.png') no-repeat center center;
-    background-size: cover;
+  md-card md-card-actions button md-icon{
+    float:left;
+  }
+
+  md-card md-card-actions button.md-icon-button{
+    width: auto;
   }
 
 }

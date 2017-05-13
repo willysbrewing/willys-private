@@ -6,21 +6,27 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(authUser) {
+  function HomeController(authUser, NewsService, UserService) {
     var vm = this;
 
-    vm.featured = [1,2]
-    vm.image = "https://www.willysbrewing.com/media/images/riotapa_Ydj4MCz.2e16d0ba.fill-1800x978.jpg"
-    vm.card = {
-        "title": "Nature",
-        "text": "Look deep into nature, then you will understand everything better. Look deep into nature, then you will understand everything better.",
-        "media": {
-            "image": {
-                "src": "assets/images/backgrounds/riotapa.jpg",
-                "alt": "Avenue"
-            }
-        }
-    };
+    vm.user = UserService.me(function(user) {
+      vm.user = user.serialize().attributes;
+    });
+
+    vm.news = null;
+    vm.news = NewsService.query(function(news) {
+      vm.news = news.serialize();
+    });
+
+    vm.likeNews = function(news) {
+      if(vm.user.news_likes.indexOf(news.id) < 0){
+        news.attributes.likes.push(vm.user.id);
+        vm.user.news_likes.push(news.id);
+        NewsService.like({
+          news_id: news.id
+        });
+      }
+    }
 
   }
 

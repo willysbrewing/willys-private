@@ -1,21 +1,10 @@
 <div id="app-home">
 
   <md-content class="md-padding">
-    <h1>Destacado</h1>
-    <ms-widget flippable="false" layout="column" flex="100">
-        <!-- Front -->
-        <ms-widget-front class="white-bg">
-            <div class="featured-card"></div>
-        </ms-widget-front>
-        <!-- / Front -->
-    </ms-widget>
-  </md-content>
-
-  <md-content class="md-padding">
     <h1>Noticias Willy's</h1>
     <div layout-xs="column" layout="row">
       <div flex-xs flex-gt-xs="50" layout="column">
-        <md-card ng-repeat="feat in vm.featured" ng-if="$index % 2 == 0">
+        <md-card ng-repeat="news in vm.news" ng-if="$index % 2 == 0">
           <!-- header -->
           <md-card-header>
             <md-card-avatar>
@@ -27,30 +16,27 @@
             </md-card-header-text>
           </md-card-header>
           <!-- image -->
-          <img ng-src="{{vm.image}}" class="md-card-image" alt="Washed Out">
+          <img ng-src="{{news.attributes.image_url}}" class="md-card-image" alt="Washed Out">
           <md-card-title>
             <md-card-title-text>
-              <span class="md-headline">Icon action buttons</span>
+              <span class="md-headline">{{news.attributes.title}}</span>
             </md-card-title-text>
           </md-card-title>
           <md-card-content>
             <p>
-              The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+              {{news.attributes.description}}
             </p>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon md-font-icon="icon-movie" class="icon"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-              <md-icon md-font-icon="icon-movie" class="icon"></md-icon>
+            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
             </md-button>
           </md-card-actions>
         </md-card>
       </div>
       <div flex-xs flex-gt-xs="50" layout="column">
-        <md-card ng-repeat="feat in vm.featured" ng-if="$index % 2 != 0">
+        <md-card ng-repeat="news in vm.news" ng-if="$index % 2 != 0">
           <!-- header -->
           <md-card-header>
             <md-card-avatar>
@@ -62,24 +48,21 @@
             </md-card-header-text>
           </md-card-header>
           <!-- image -->
-          <img ng-src="{{vm.image}}" class="md-card-image" alt="Washed Out">
+          <img ng-src="{{news.attributes.image_url}}" class="md-card-image" alt="Washed Out">
           <md-card-title>
             <md-card-title-text>
-              <span class="md-headline">Icon action buttons</span>
+              <span class="md-headline">{{news.attributes.title}}</span>
             </md-card-title-text>
           </md-card-title>
           <md-card-content>
             <p>
-              The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+              {{news.attributes.description}}
             </p>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon md-font-icon="icon-movie" class="icon"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-              <md-icon md-font-icon="icon-movie" class="icon"></md-icon>
+            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
             </md-button>
           </md-card-actions>
         </md-card>
