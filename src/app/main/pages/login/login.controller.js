@@ -6,9 +6,18 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController(authUser, AuthService, UserService, $state) {
+  function LoginController(authUser, AuthService, UserService, $state, $scope, $rootScope) {
     var vm = this;
     vm.AuthService = AuthService;
+
+    // Remove the splash screen
+    $scope.$on('$viewContentAnimationEnded', function (event)
+    {
+        if ( event.targetScope.$id === $scope.$id )
+        {
+            $rootScope.$broadcast('msSplashScreen::remove');
+        }
+    });
 
     if (authUser) {
       authUser.getToken().then(function(tokenId){

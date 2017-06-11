@@ -22,7 +22,7 @@
       Event.prototype.serialize = function() {
         return this.data;
       };
-
+      
       return Event;
 
     }

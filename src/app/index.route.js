@@ -15,7 +15,8 @@
         abstract: true,
         views   : {
             'main@'         : {
-                templateUrl: 'app/core/layouts/vertical-navigation.html'
+                templateUrl: 'app/core/layouts/vertical-navigation.html',
+                controller : 'MainController as vm'
             },
             'toolbar@app'   : {
                 templateUrl: 'app/toolbar/toolbar.html',

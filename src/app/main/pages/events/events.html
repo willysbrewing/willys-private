@@ -29,7 +29,7 @@
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
             <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.goingEvent(event)">
-              <span ng-class="{'md-warn-fg': vm.user.events_going.indexOf(event.id) >= 0}">¡YO VOY! &nbsp;{{event.attributes.going.length}}</span>
+              <span ng-class="{'md-warn-fg': vm.user.attributes.events_going.indexOf(event.id) >= 0}">¡YO VOY! &nbsp;{{event.attributes.going.length}}</span>
             </md-button>
           </md-card-actions>
         </md-card>

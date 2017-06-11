@@ -7,9 +7,18 @@
         .controller('RegisterController', RegisterController);
 
     /** @ngInject */
-    function RegisterController(AuthService, $state, UserService) {
+    function RegisterController(AuthService, $state, UserService, $scope, $rootScope) {
       var vm = this;
       vm.AuthService = AuthService;
+
+      // Remove the splash screen
+      $scope.$on('$viewContentAnimationEnded', function (event)
+      {
+          if ( event.targetScope.$id === $scope.$id )
+          {
+              $rootScope.$broadcast('msSplashScreen::remove');
+          }
+      });
 
       vm.register = function() {
 

@@ -58,6 +58,20 @@
 
     <div>
 
+      <!-- SPLASH SCREEN -->
+      <ms-splash-screen id="splash-screen">
+          <div class="center">
+              <div class="logo">
+                  <img style="width: 200px;" src="assets/images/willys.svg">
+                  <!-- Material Design Spinner -->
+                  <md-progress-circular class="md-warn" style="margin: 0 auto;" md-diameter="64">
+                  </md-progress-circular>
+                  <!-- / Material Design Spinner -->
+            </div>
+          </div>
+      </ms-splash-screen>
+      <!-- / SPLASH SCREEN -->
+
       <div id="main" ui-view="main" layout="column"></div>
 
     </div>

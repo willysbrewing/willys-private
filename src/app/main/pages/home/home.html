@@ -29,8 +29,8 @@
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
             <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
-              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}"></md-icon>
-              <span ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
             </md-button>
           </md-card-actions>
         </md-card>
@@ -61,8 +61,8 @@
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
             <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
-              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}"></md-icon>
-              <span ng-class="{'md-warn-fg': vm.user.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
             </md-button>
           </md-card-actions>
         </md-card>
