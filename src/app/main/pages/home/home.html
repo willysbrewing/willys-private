@@ -1,0 +1,73 @@
+<div id="app-home">
+
+  <md-content class="md-padding">
+    <h1>Noticias Willy's</h1>
+    <div layout-xs="column" layout="row">
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card ng-repeat="news in vm.news" ng-if="$index % 2 == 0">
+          <!-- header -->
+          <md-card-header>
+            <md-card-avatar>
+              <md-icon class="md-avatar-icon" md-svg-icon="assets/images/willys.svg"></md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-title">Willy's Brewing</span>
+              <span class="md-subhead">Noticia</span>
+            </md-card-header-text>
+          </md-card-header>
+          <!-- image -->
+          <img ng-src="{{news.attributes.image_url}}" class="md-card-image">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{news.attributes.title}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              {{news.attributes.description}}
+            </p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card ng-repeat="news in vm.news" ng-if="$index % 2 != 0">
+          <!-- header -->
+          <md-card-header>
+            <md-card-avatar>
+              <md-icon class="md-avatar-icon" md-svg-icon="assets/images/willys.svg"></md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-title">Willy's Brewing</span>
+              <span class="md-subhead">Noticia</span>
+            </md-card-header-text>
+          </md-card-header>
+          <!-- image -->
+          <img ng-src="{{news.attributes.image_url}}" class="md-card-image">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{news.attributes.title}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              {{news.attributes.description}}
+            </p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite" ng-click="vm.likeNews(news)">
+              <md-icon md-font-icon="icon-heart" class="icon" ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}"></md-icon>
+              <span ng-class="{'md-warn-fg': vm.user.attributes.news_likes.indexOf(news.id) >= 0}">&nbsp;{{news.attributes.likes.length}}</span>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </md-content>
+
+</div>

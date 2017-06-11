@@ -6,23 +6,57 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $cookies, Data, User) {
+  function runBlock($log, $rootScope, $state, $timeout) {
 
-    var user = null;
-    var userId = $cookies.get('user');
+    // Listening statechangeError from ui-router
+    var stateChangeError = $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+      if (error === 'AUTH_REQUIRED') {
+        $state.go('app.login');
+      }
+    });
 
-    if(angular.isUndefined(userId)){
-      /* New Visitor */
-      user = User.save(function(){
-        $cookies.put('user', user.id);
-      });
-    }
-    else{
-      /* Returning Visitor */
-      user = User.get({user:userId});
-    }
+    // Activate loading indicator
+    var stateChangeStartEvent = $rootScope.$on('$stateChangeStart', function ()
+    {
+        $rootScope.loadingProgress = true;
+    });
 
-    Data.setUser(user.$promise);
+    // De-activate loading indicator
+    var stateChangeSuccessEvent = $rootScope.$on('$stateChangeSuccess', function ()
+    {
+        $timeout(function ()
+        {
+            $rootScope.loadingProgress = false;
+        });
+    });
+
+    // API Requests
+    var APIRequestStartEvent = $rootScope.$on('$APIRequestStartEvent', function ()
+    {
+        $timeout(function ()
+        {
+            $rootScope.loadingProgress = true;
+        });
+    });
+
+    //
+    var APIRequestEndEvent = $rootScope.$on('$APIRequestEndEvent', function ()
+    {
+        $timeout(function ()
+        {
+            $rootScope.loadingProgress = false;
+        });
+    });
+
+    $rootScope.$on('$destroy', function ()
+      {
+          stateChangeError();
+          stateChangeStartEvent();
+          stateChangeSuccessEvent();
+          APIRequestStartEvent();
+          APIRequestEndEvent();
+    });
+
   }
 
 })();

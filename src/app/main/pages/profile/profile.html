@@ -1,0 +1,43 @@
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="space-between end">
+        <div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="start center">
+            <img class="profile-image avatar huge" ng-src="{{ vm.photoUrl }}">
+
+            <div class="name">Hola {{ vm.user.first_name }}!</div>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" flex>
+
+        <md-tabs md-dynamic-height>
+            <md-tab>
+                <md-tab-label>
+                    <span>Sobre mí</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="about-tab"
+                                ng-include="'app/main/pages/profile/tabs/about/about.html'">
+                    </md-content>
+                </md-tab-body>
+            </md-tab>
+            <md-tab>
+                <md-tab-label>
+                    <span>Inversión</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="photos-videos-tab"
+                                ng-include="'app/main/pages/profile/tabs/invest/invest.html'">
+                    </md-content>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

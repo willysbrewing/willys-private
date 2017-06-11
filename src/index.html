@@ -2,24 +2,39 @@
 <html ng-app="willys">
   <head>
     <meta charset="utf-8">
-    <title>Willy's Profile</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Aquí encontrarás las últimas noticias, eventos y birras con sello Willy's. Además te daremos acceso prioritario a nuestras promociones y últimas ofertas.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
 
-    <!--
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="" />
+    <meta name="keywords" content="willys brewing, willy's, willy's brewing, cerveza natural, cerveza, cerveza española, cerveza revolución">
+    <meta name="author" content="@willysbrewing" />
+    <link rel="canonical" href="https://app.wilysbrewing.com" />
+    <title>Zona Willy's | Willy's Brewing</title>
 
-    <meta property="og:url" content="http://voten.me" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png">
+    <meta name="msapplication-TileColor" content="#9E9E9E">
+    <meta name="msapplication-TileImage" content="/assets/icons/android-icon-192x192.png">
+    <meta name="theme-color" content="#9E9E9E">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@willysbrewing">
+    <meta name="twitter:creator" content="@willysbrewing">
+    <meta name="twitter:title" content="Willy's APP">
+    <meta name="twitter:description" content="Aquí encontrarás las últimas noticias, eventos y birras con sello Willy's. Además te daremos acceso prioritario a nuestras promociones y últimas ofertas.">
+    <meta name="twitter:image:src" content="https://app.willysbrewing.com/assets/images/backgrounds/riotapa.jpg" />
+
+    <meta property="fb:app_id" content="195907537508439" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
-    -->
+    <meta property="og:url" content="https://app.willysbrewing.com" />
+    <meta property="og:title" content="Willy's APP" />
+    <meta property="og:image" content="https://app.willysbrewing.com/assets/images/backgrounds/riotapa.jpg" />
+    <meta property="og:description" content="Aquí encontrarás las últimas noticias, eventos y birras con sello Willy's. Además te daremos acceso prioritario a nuestras promociones y últimas ofertas." />
+    <meta property="og:site_name" content="willysbrewing" />
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
@@ -32,8 +47,9 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Chau+Philomene+One" rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body md-theme="CUSTOM">
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
     <!--[if lt IE 10]>
@@ -42,13 +58,21 @@
 
     <div>
 
-      <wb-layout></wb-layout>
+      <!-- SPLASH SCREEN -->
+      <ms-splash-screen id="splash-screen">
+          <div class="center">
+              <div class="logo">
+                  <img style="width: 200px;" src="assets/images/willys.svg">
+                  <!-- Material Design Spinner -->
+                  <md-progress-circular class="md-warn" style="margin: 0 auto;" md-diameter="64">
+                  </md-progress-circular>
+                  <!-- / Material Design Spinner -->
+            </div>
+          </div>
+      </ms-splash-screen>
+      <!-- / SPLASH SCREEN -->
 
-      <md-content>
-        <div ui-view></div>
-      </md-content>
-
-      <wb-footer></wb-footer>
+      <div id="main" ui-view="main" layout="column"></div>
 
     </div>
 
@@ -57,6 +81,20 @@
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB4TdPdkmQz0PJR7eU6V7ARf5l1bdnLbxU",
+        authDomain: "willys-4fbc0.firebaseapp.com",
+        databaseURL: "https://willys-4fbc0.firebaseio.com",
+        storageBucket: "willys-4fbc0.appspot.com",
+        messagingSenderId: "334793799619"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="env.js"></script>
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->

@@ -1,0 +1,74 @@
+<div layout="row" layout-wrap>
+
+    <div class="about" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="65">
+        <div class="profile-box info-box general md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="title">Información general</div>
+            </header>
+
+            <div class="content">
+              <div class="info-line">
+                <div class="title">Nombre </div>
+                <div class="info">{{vm.user.first_name}} {{vm.user.last_name}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Género</div>
+                <div class="info">{{vm.user.gender || 'notset'}}</div>
+              </div>
+
+              <div class="info-line">
+                <div class="title">Usuario</div>
+                <div class="info">Te uniste el {{vm.user.created_at | date:'shortDate' }} con el email {{vm.user.email}}</div>
+              </div>
+
+            </div>
+        </div>
+
+        <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="title">Contacto</div>
+            </header>
+            <div class="content">
+                <div class="info-line">
+                    <div class="title">Dirección</div>
+                    <div class="info">{{vm.user.address || 'notset'}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="title">Teléfono</div>
+                    <div class="info">{{ vm.user.phone || 'notset' }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WIDGET 2 -->
+    <ms-widget flippable="false" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="25">
+
+        <!-- Front -->
+        <ms-widget-front class="h-170 p-16 md-accent-bg">
+            <div class="pb-8" layout="row" layout-align="space-between center">
+                <div class="h4 font-weight-500">ACCIONES</div>
+            </div>
+
+            <div class="white-fg" layout="column" layout-align="space-between" flex>
+                <div>
+                    <div class="md-display-1 pb-16">{{ vm.user.stocks.length || 0}} de 4</div>
+
+                    <div class="pb-16">
+                        <md-progress-linear md-mode="determinate"
+                                            value="{{ (100*(vm.user.stocks.length || 0)/4) }}"></md-progress-linear>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="end end">
+                    <span class="text-boxed-light">Total de acciones: 30</span>
+                </div>
+            </div>
+        </ms-widget-front>
+        <!-- / Front -->
+
+    </ms-widget>
+    <!-- / WIDGET 2 -->
+
+</div>

@@ -5,3 +5,6 @@ coverage/
 .idea/
 .tmp/
 dist/
+src/env.js
+*.env
+*.zip

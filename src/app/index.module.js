@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('willys', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngResource', 'ui.router', 'ngMaterial', 'ngFileUpload', '720kb.socialshare']);
+    .module('willys', ['app.core','app.navigation','app.toolbar','app.main', 'app.login', 'app.register']);
 
 })();
