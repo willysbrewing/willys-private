@@ -6,7 +6,7 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController(authUser, NewsService, UserService) {
+  function HomeController(authUser, NewsService, UserService, CacheService) {
     var vm = this;
 
     vm.user = UserService.me(function(user) {
@@ -26,6 +26,9 @@
         NewsService.like({
           news_id: news.id
         });
+        // update cache
+        CacheService.updateUser(vm.user);
+        CacheService.updateNews(vm.news);
       }
     }
 

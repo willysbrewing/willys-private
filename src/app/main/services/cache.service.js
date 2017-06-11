@@ -16,6 +16,9 @@
         },
         'updateEvents': function(events) {
           $httpDefaultCache.put(APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/event', {data: events});
+        },
+        'updateNews': function(news) {
+          $httpDefaultCache.put(APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/news', {data: news});
         }
 
       };
