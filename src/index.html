@@ -9,7 +9,7 @@
     <meta name="keywords" content="willys brewing, willy's, willy's brewing, cerveza natural, cerveza, cerveza española, cerveza revolución">
     <meta name="author" content="@willysbrewing" />
     <link rel="canonical" href="https://app.wilysbrewing.com" />
-    <title>Willy's App</title>
+    <title>Zona Willy's | Willy's Brewing</title>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/favicon.ico">
@@ -26,13 +26,13 @@
     <meta name="twitter:creator" content="@willysbrewing">
     <meta name="twitter:title" content="Willy's APP">
     <meta name="twitter:description" content="Aquí encontrarás las últimas noticias, eventos y birras con sello Willy's. Además te daremos acceso prioritario a nuestras promociones y últimas ofertas.">
-    <meta name="twitter:image:src" content="https://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-400 as img %}{{ img.url }}{% else %}{% static 'images/willys-content.png' %}{% endif %}" />
+    <meta name="twitter:image:src" content="https://app.willysbrewing.com/assets/images/backgrounds/riotapa.jpg" />
 
     <meta property="fb:app_id" content="195907537508439" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://app.willysbrewing.com" />
     <meta property="og:title" content="Willy's APP" />
-    <meta property="og:image" content="https://{{ request.site.hostname }}{% if self.feed_image %}{% image self.feed_image width-1024 as img %}{{ img.url }}{% else %}{% static 'images/willys-content.png' %}{% endif %}" />
+    <meta property="og:image" content="https://app.willysbrewing.com/assets/images/backgrounds/riotapa.jpg" />
     <meta property="og:description" content="Aquí encontrarás las últimas noticias, eventos y birras con sello Willy's. Además te daremos acceso prioritario a nuestras promociones y últimas ofertas." />
     <meta property="og:site_name" content="willysbrewing" />
 
@@ -93,6 +93,8 @@
       };
       firebase.initializeApp(config);
     </script>
+
+    <script src="env.js"></script>
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
