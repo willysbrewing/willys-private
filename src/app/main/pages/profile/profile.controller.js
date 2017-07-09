@@ -14,6 +14,7 @@
 
     vm.user = UserService.me(function(user) {
       vm.user = user.serialize().attributes;
+      vm.user.birthdate = vm.user.birthdate || new Date();
     });
 
   }

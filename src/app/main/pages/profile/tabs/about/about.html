@@ -14,7 +14,7 @@
 
               <div class="info-line">
                 <div class="title">Usuario Willy's</div>
-                <div class="info">Te uniste el {{vm.user.created_at | date:'shortDate' }} con el email {{vm.user.email}}</div>
+                <div class="info">Te uniste el {{vm.user.created_at | date:'dd/MM/yyyy' }} con el email {{vm.user.email}}</div>
               </div>
 
               <div class="info-line">
@@ -25,6 +25,11 @@
 
                   <md-input-container flex="100" flex-gt-xs="50">
                     <input type="text" ng-disabled="true" name="last_name" ng-model="vm.user.last_name" placeholder="Apellidos">
+                  </md-input-container>
+
+                  <md-input-container flex="100" flex-gt-xs="100" class="md-block">
+                    <label>Fecha de nacimiento</label>
+                    <md-datepicker ng-model="vm.user.birthdate"></md-datepicker>
                   </md-input-container>
 
                   <md-input-container flex="100" flex-gt-xs="100" class="md-block">
