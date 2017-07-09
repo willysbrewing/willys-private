@@ -16,7 +16,7 @@
     .module('willys')
     .constant('APP_CONFIG',{
         'APP_NAME' : 'willys',
-        'APP_VERSION' : '1.0.0',
+        'APP_VERSION' : '1.0.1',
         'APP_VERSION_NAME' : 'doughnut-insult-alpha',
         'LANGUAGES' : {
             'es-ES' : true,

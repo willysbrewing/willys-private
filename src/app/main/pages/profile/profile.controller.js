@@ -9,6 +9,7 @@
   function ProfileController(authUser, UserService) {
     var vm = this;
     vm.authUser = authUser;
+    vm.UserService = UserService;
     vm.photoUrl = vm.authUser.photoURL || 'assets/images/profile.jpg';
 
     vm.user = UserService.me(function(user) {

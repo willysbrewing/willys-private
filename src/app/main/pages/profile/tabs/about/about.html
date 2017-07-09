@@ -1,31 +1,50 @@
 <div layout="row" layout-wrap>
 
+    <p class="h3 m-16" ng-if="vm.user.stocks.length < 4">
+      Cuando adquieras una participación en Willy's, te confirmaremos su recepción a través de un email y entonces podrás ver la información reflejada en tu perfil.</span>
+    </p>
+
     <div class="about" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="65">
         <div class="profile-box info-box general md-whiteframe-1dp" layout="column">
             <header class="md-accent-bg">
                 <div class="title">Información general</div>
             </header>
 
-            <div class="content">
-              <div class="info-line">
-                <div class="title">Nombre </div>
-                <div class="info">{{vm.user.first_name}} {{vm.user.last_name}}</div>
-              </div>
+            <div class="md-content content">
 
               <div class="info-line">
-                <div class="title">Género</div>
-                <div class="info">{{vm.user.gender || 'notset'}}</div>
-              </div>
-
-              <div class="info-line">
-                <div class="title">Usuario</div>
+                <div class="title">Usuario Willy's</div>
                 <div class="info">Te uniste el {{vm.user.created_at | date:'shortDate' }} con el email {{vm.user.email}}</div>
+              </div>
+
+              <div class="info-line">
+                <form name="userForm" novalidate>
+                  <md-input-container flex="100" flex-gt-xs="50">
+                    <input type="text" ng-disabled="true" name="first_name" ng-model="vm.user.first_name" placeholder="Nombre">
+                  </md-input-container>
+
+                  <md-input-container flex="100" flex-gt-xs="50">
+                    <input type="text" ng-disabled="true" name="last_name" ng-model="vm.user.last_name" placeholder="Apellidos">
+                  </md-input-container>
+
+                  <md-input-container flex="100" flex-gt-xs="100" class="md-block">
+                    <input type="text" name="address" ng-model="vm.user.address" placeholder="Dirección">
+                  </md-input-container>
+
+                  <div layout="row" layout-align="end end">
+                    <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
+                               ng-disabled="userForm.$invalid || userForm.$pristine"
+                               ng-click="vm.UserService.updateMe(vm.user)">
+                        Actualizar Datos
+                    </md-button>
+                  </div>
+                </form>
               </div>
 
             </div>
         </div>
 
-        <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+        <!-- <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
             <header class="md-accent-bg">
                 <div class="title">Contacto</div>
             </header>
@@ -39,7 +58,7 @@
                     <div class="info">{{ vm.user.phone || 'notset' }}</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- WIDGET 2 -->
@@ -49,6 +68,9 @@
         <ms-widget-front class="h-170 p-16 md-accent-bg">
             <div class="pb-8" layout="row" layout-align="space-between center">
                 <div class="h4 font-weight-500">ACCIONES</div>
+                <div layout="row" layout-align="end end">
+                    <span class="text-boxed-light">Total de participaciones: 40</span>
+                </div>
             </div>
 
             <div class="white-fg" layout="column" layout-align="space-between" flex>
@@ -62,7 +84,7 @@
                 </div>
 
                 <div layout="row" layout-align="end end">
-                    <span class="text-boxed-light">Total de acciones: 30</span>
+                    <md-button ng-if="vm.user.stocks.length < 4" ng-href="https://www.paypal.me/cervezawillys/50" target="_blank" class="md-raised">Adquirir participaciones</md-button>
                 </div>
             </div>
         </ms-widget-front>
@@ -70,5 +92,26 @@
 
     </ms-widget>
     <!-- / WIDGET 2 -->
+
+    <!-- WIDGET 11 -->
+    <ms-widget ng-if="vm.user.stocks.length > 0" class="h-300" layout="column" flex="100" flex-gt-md="50">
+
+        <!-- Front -->
+        <ms-widget-front class="p-16 teal-bg white-fg" layout="row" flex>
+            <div layout="column" layout-align="center center" flex>
+                <div class="md-display-3 pb-8">
+                  <span ng-if="vm.user.stocks.length == 4">ERES VIP</span>
+                  <span ng-if="vm.user.stocks.length < 4">ERES MIEMBRO</span>
+                </div>
+            </div>
+
+            <div class="background-image-center">
+                <md-icon md-font-icon="icon-star" class="s256 faint-text"></md-icon>
+            </div>
+        </ms-widget-front>
+        <!-- / Front -->
+
+    </ms-widget>
+    <!-- / WIDGET 11 -->
 
 </div>

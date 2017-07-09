@@ -26,6 +26,11 @@
           'method': 'POST',
           'url': APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/user/me',
           'cache': true
+        },
+        'updateMe': {
+          'method': 'PATCH',
+          'url': APP_CONFIG.API_URL+'/'+APP_CONFIG.API_VERSION+'/user/me',
+          'cache': true
         }
       });
 

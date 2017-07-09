@@ -58,6 +58,20 @@
             }
           }
       })
+      .state('app.shop', {
+          url      : '/tienda',
+          views    : {
+            'content@app': {
+                templateUrl: 'app/main/pages/shop/shop.html',
+                controller : 'ShopController as vm'
+            }
+          },
+          resolve: {
+            authUser: function(AuthService){
+              return AuthService.$requireSignIn();
+            }
+          }
+      })
       .state('app.contests', {
           url      : '/concursos',
           views    : {
@@ -87,10 +101,10 @@
           weight   : 1
       });
 
-      msNavigationServiceProvider.saveItem('pages.events', {
-          title    : 'Eventos',
-          icon     : 'icon-cup',
-          state    : 'app.events',
+      msNavigationServiceProvider.saveItem('pages.shop', {
+          title    : 'Tienda',
+          icon     : 'icon-cart',
+          state    : 'app.shop',
           weight   : 1
       });
 
