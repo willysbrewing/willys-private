@@ -5,7 +5,7 @@
   .module('willys')
   .config(routeConfig);
 
-  function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+  function routeConfig($stateProvider, $urlRouterProvider, $locationProvider, AnalyticsProvider) {
 
     // Enabe HTML5 Mode
     $locationProvider.html5Mode(true);
@@ -28,6 +28,14 @@
             }
         }
     });
+
+    // Track all URL query params (default is false).
+    AnalyticsProvider.trackUrlParams(true);
+
+    // Change the default page event name.
+    // Helpful when using ui-router, which fires $stateChangeSuccess instead of $routeChangeSuccess.
+    AnalyticsProvider.setPageEvent('$stateChangeSuccess');
+
   }
 
 })();

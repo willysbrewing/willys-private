@@ -1,6 +1,6 @@
 <div layout="row" layout-wrap>
 
-    <p class="h3 m-16" ng-if="vm.user.stocks.length < 4">
+    <p class="h3 m-16" ng-if="vm.user.attributes.stocks.length < 4">
       Cuando adquieras una participación en Willy's, te confirmaremos su recepción a través de un email y entonces podrás ver la información reflejada en tu perfil.</span>
     </p>
 
@@ -14,32 +14,32 @@
 
               <div class="info-line">
                 <div class="title">Usuario Willy's</div>
-                <div class="info">Te uniste el {{vm.user.created_at | date:'dd/MM/yyyy' }} con el email {{vm.user.email}}</div>
+                <div class="info">Te uniste el {{vm.user.attributes.created_at | date:'dd/MM/yyyy' }} con el email {{vm.user.attributes.email}}</div>
               </div>
 
               <div class="info-line">
                 <form name="userForm" novalidate>
                   <md-input-container flex="100" flex-gt-xs="50">
-                    <input type="text" ng-disabled="true" name="first_name" ng-model="vm.user.first_name" placeholder="Nombre">
+                    <input type="text" ng-disabled="true" name="first_name" ng-model="vm.user.attributes.first_name" placeholder="Nombre">
                   </md-input-container>
 
                   <md-input-container flex="100" flex-gt-xs="50">
-                    <input type="text" ng-disabled="true" name="last_name" ng-model="vm.user.last_name" placeholder="Apellidos">
+                    <input type="text" ng-disabled="true" name="last_name" ng-model="vm.user.attributes.last_name" placeholder="Apellidos">
                   </md-input-container>
 
                   <md-input-container flex="100" flex-gt-xs="100" class="md-block">
                     <label>Fecha de nacimiento</label>
-                    <md-datepicker ng-model="vm.user.birthdate"></md-datepicker>
+                    <md-datepicker ng-model="vm.user.attributes.birthdate" md-current-view="year"></md-datepicker>
                   </md-input-container>
 
                   <md-input-container flex="100" flex-gt-xs="100" class="md-block">
-                    <input type="text" name="address" ng-model="vm.user.address" placeholder="Dirección">
+                    <input type="text" name="address" ng-model="vm.user.attributes.address" placeholder="Dirección">
                   </md-input-container>
 
                   <div layout="row" layout-align="end end">
                     <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
                                ng-disabled="userForm.$invalid || userForm.$pristine"
-                               ng-click="vm.UserService.updateMe(vm.user)">
+                               ng-click="vm.updateMe()">
                         Actualizar Datos
                     </md-button>
                   </div>
@@ -56,11 +56,11 @@
             <div class="content">
                 <div class="info-line">
                     <div class="title">Dirección</div>
-                    <div class="info">{{vm.user.address || 'notset'}}</div>
+                    <div class="info">{{vm.user.attributes.address || 'notset'}}</div>
                 </div>
                 <div class="info-line">
                     <div class="title">Teléfono</div>
-                    <div class="info">{{ vm.user.phone || 'notset' }}</div>
+                    <div class="info">{{ vm.user.attributes.phone || 'notset' }}</div>
                 </div>
             </div>
         </div> -->
@@ -80,16 +80,16 @@
 
             <div class="white-fg" layout="column" layout-align="space-between" flex>
                 <div>
-                    <div class="md-display-1 pb-16">{{ vm.user.stocks.length || 0}} de 4</div>
+                    <div class="md-display-1 pb-16">{{ vm.user.attributes.stocks.length || 0}} de 4</div>
 
                     <div class="pb-16">
                         <md-progress-linear md-mode="determinate"
-                                            value="{{ (100*(vm.user.stocks.length || 0)/4) }}"></md-progress-linear>
+                                            value="{{ (100*(vm.user.attributes.stocks.length || 0)/4) }}"></md-progress-linear>
                     </div>
                 </div>
 
                 <div layout="row" layout-align="end end">
-                    <md-button ng-if="vm.user.stocks.length < 4" ng-href="https://www.paypal.me/cervezawillys/50" target="_blank" class="md-raised">Adquirir participaciones</md-button>
+                    <md-button ng-if="vm.user.attributes.stocks.length < 4" ng-href="https://www.paypal.me/cervezawillys/50" target="_blank" class="md-raised">Adquirir participaciones</md-button>
                 </div>
             </div>
         </ms-widget-front>
@@ -99,14 +99,14 @@
     <!-- / WIDGET 2 -->
 
     <!-- WIDGET 11 -->
-    <ms-widget ng-if="vm.user.stocks.length > 0" class="h-300" layout="column" flex="100" flex-gt-md="50">
+    <ms-widget ng-if="vm.user.attributes.stocks.length > 0" class="h-300" layout="column" flex="100" flex-gt-md="50">
 
         <!-- Front -->
         <ms-widget-front class="p-16 teal-bg white-fg" layout="row" flex>
             <div layout="column" layout-align="center center" flex>
                 <div class="md-display-3 pb-8">
-                  <span ng-if="vm.user.stocks.length == 4">ERES VIP</span>
-                  <span ng-if="vm.user.stocks.length < 4">ERES MIEMBRO</span>
+                  <span ng-if="vm.user.attributes.stocks.length == 4">ERES VIP</span>
+                  <span ng-if="vm.user.attributes.stocks.length < 4">ERES MIEMBRO</span>
                 </div>
             </div>
 

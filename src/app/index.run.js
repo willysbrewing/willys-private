@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $rootScope, $state, $timeout) {
+  function runBlock($log, $rootScope, $state, $timeout, Analytics) {
 
     // Listening statechangeError from ui-router
     var stateChangeError = $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {

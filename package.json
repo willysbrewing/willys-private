@@ -1,7 +1,7 @@
 {
   "name": "willys-private",
   "version": "1.0.1",
-  "description" : "",
+  "description": "",
   "license": "",
   "repository": "",
   "scripts": {
@@ -10,7 +10,7 @@
     "develop": "gulp serve",
     "monitor": "nodemon app.js"
   },
-  "dependencies":{
+  "dependencies": {
     "express": "^4.13.4"
   },
   "peerDependencies": {
