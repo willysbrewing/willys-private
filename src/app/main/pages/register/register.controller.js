@@ -7,7 +7,7 @@
         .controller('RegisterController', RegisterController);
 
     /** @ngInject */
-    function RegisterController(AuthService, $state, UserService, $scope, $rootScope) {
+    function RegisterController(AuthService, $state, UserService, $scope, $rootScope, $window) {
       var vm = this;
       vm.AuthService = AuthService;
 
@@ -34,19 +34,20 @@
         .then(function(data){
           if(!data.errors) {
             // Success
-            vm.AuthService.$createUserWithEmailAndPassword(vm.form.email, vm.form.password)
-            .then(function(){
-              $state.go('app.login');
-            })
-            .catch(function(error) {
-              vm.error = error.message;
-              if (error.code === 'auth/weak-password') {
-                vm.error = 'La contraseña debe tener al menos 6 caracteres.';
-              }
-              if (error.code === 'auth/email-already-in-use') {
-                vm.error = 'Ya existe un usuario con ese email';
-              }
-            });
+            $window.firebase.auth().createUserWithEmailAndPassword(vm.form.email, vm.form.password)
+              .then(function(user){
+                user.sendEmailVerification();
+                $state.go('app.login');
+              })
+              .catch(function(error) {
+                vm.error = error.message;
+                if (error.code === 'auth/weak-password') {
+                  vm.error = 'La contraseña debe tener al menos 6 caracteres.';
+                }
+                if (error.code === 'auth/email-already-in-use') {
+                  vm.error = 'Ya existe un usuario con ese email';
+                }
+              });
           } else {
             vm.error = data.errors[0].detail;
           }
